@@ -1,7 +1,7 @@
 ﻿namespace Data.Models;
 public class Battle
 {
-    public int BattleId { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; } = default!;
     public Character WinnerCharacter { get; set; } = default!;
     public Character LoserCharacter { get; set; } = default!;
