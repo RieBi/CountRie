@@ -14,7 +14,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        return RedirectToActionPermanent("Index", "Country");
     }
 
     public IActionResult Privacy()
