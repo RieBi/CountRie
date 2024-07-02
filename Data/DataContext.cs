@@ -1,4 +1,5 @@
-﻿using Data.Models;
+﻿using Data.ModelConfigurations;
+using Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data;
@@ -12,4 +13,17 @@ public class DataContext : DbContext, IDataContext
     public DbSet<NaturalResource> NaturalResources { get; set; }
     public DbSet<Religion> Religions { get; set; }
     public DbSet<Specialty> Specialties { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.ApplyConfiguration(new BattleConfiguration());
+        modelBuilder.ApplyConfiguration(new CharacterConfiguration());
+        modelBuilder.ApplyConfiguration(new CountryConfiguration());
+        modelBuilder.ApplyConfiguration(new GovernanceTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new LanguageConfiguration());
+        modelBuilder.ApplyConfiguration(new ReligionConfiguration());
+        modelBuilder.ApplyConfiguration(new SpecialtyConfiguration());
+    }
 }
