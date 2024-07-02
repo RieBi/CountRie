@@ -9,6 +9,9 @@ internal class CharacterConfiguration : IEntityTypeConfiguration<Character>
         builder.HasOne(f => f.CurrentCountry);
         builder.HasOne(f => f.OriginCountry);
 
+        builder
+            .HasMany(f => f.Battles);
+
         builder.Property(f => f.Name).HasMaxLength(DataConfig.NameLength);
         builder.Property(f => f.Description).HasMaxLength(DataConfig.DescriptionLength);
         builder.Property(f => f.PortraitUrl).HasMaxLength(DataConfig.UrlLength);

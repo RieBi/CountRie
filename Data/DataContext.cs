@@ -26,4 +26,9 @@ public class DataContext : DbContext, IDataContext
         modelBuilder.ApplyConfiguration(new ReligionConfiguration());
         modelBuilder.ApplyConfiguration(new SpecialtyConfiguration());
     }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseNpgsql();
+    }
 }
