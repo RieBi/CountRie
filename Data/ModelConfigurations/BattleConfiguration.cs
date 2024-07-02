@@ -16,6 +16,6 @@ internal class BattleConfiguration : IEntityTypeConfiguration<Battle>
 
         builder.HasOne(f => f.Country);
 
-        builder.Property(f => f.Name).HasMaxLength(100);
+        builder.Property(f => f.Name).HasMaxLength(DataConfig.NameLength);
     }
 }
