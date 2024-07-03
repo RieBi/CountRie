@@ -25,5 +25,8 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
         modelBuilder.ApplyConfiguration(new LanguageConfiguration());
         modelBuilder.ApplyConfiguration(new ReligionConfiguration());
         modelBuilder.ApplyConfiguration(new SpecialtyConfiguration());
+
+        var dataSeeder = new DataSeeder(modelBuilder);
+        dataSeeder.ApplySeeding();
     }
 }
