@@ -27,5 +27,16 @@ internal class DataSeeder(ModelBuilder modelBuilder)
         };
 
         _modelBuilder.Entity<Religion>().HasData(religions);
+
+        var governanceTypes = new List<GovernanceType>()
+        {
+            new() { Name = "Monarchy", Description = "Rule by a king or queen." },
+            new() { Name = "Oligarchy", Description = "A form of government in which power is vested in a small group of people." },
+            new() { Name = "Republic", Description = "A state in which supreme power is held by the people and their elected representatives." },
+            new() { Name = "Dictatorship", Description = "A form of government in which one person or a small group holds absolute power." },
+            new() { Name = "Confederacy", Description = "A union of partially self-governing states or regions." },
+        };
+
+        _modelBuilder.Entity<GovernanceType>().HasData(governanceTypes);
     }
 }
