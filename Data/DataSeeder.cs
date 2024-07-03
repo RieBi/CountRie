@@ -1,11 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 namespace Data;
-internal class DataSeeder(ModelBuilder modelBuilder)
+public class DataSeeder(DataContext dataContext) : IDataSeeder
 {
-    private readonly ModelBuilder _modelBuilder = modelBuilder;
+    private readonly DataContext context = dataContext;
 
     public void ApplySeeding()
     {
+        if (context.Countries.Any())
+            return;
+
         var languages = new List<Language>()
         {
             new() { Id = 1, Name = "English", Description = "Widely spoken throughout the world." },
@@ -19,8 +22,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
             new() { Id = 9, Name = "German", Description = "Language spoken primarily in Germany, Austria, and parts of Switzerland." },
         };
 
-        _modelBuilder.Entity<Language>().HasData(languages);
-
         var religions = new List<Religion>()
         {
             new() { Id = 1, Name = "Christianity", Description = "One of the world's largest religions based on the teachings of Jesus Christ." },
@@ -29,8 +30,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
             new() { Id = 4, Name = "Buddhism", Description = "Dharmic religion founded by Siddhartha Gautama that emphasizes achieving enlightenment through the Four Noble Truths and the Eightfold Path." },
             new() { Id = 5, Name = "Sikhism", Description = "Monotheistic religion founded in Punjab, India in the 15th century." },
         };
-
-        _modelBuilder.Entity<Religion>().HasData(religions);
 
         var governanceTypes = new List<GovernanceType>()
         {
@@ -41,8 +40,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
             new() { Id = 5, Name = "Dictatorship", Description = "A form of government in which one person or a small group holds absolute power." },
             new() { Id = 6, Name = "Confederacy", Description = "A union of partially self-governing states or regions." },
         };
-
-        _modelBuilder.Entity<GovernanceType>().HasData(governanceTypes);
 
         var naturalResources = new List<NaturalResource>()
         {
@@ -63,8 +60,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
             new() { Id = 15, Name = "Uranium", Description = "Radioactive element used in nuclear power generation." },
         };
 
-        _modelBuilder.Entity<NaturalResource>().HasData(naturalResources);
-
         var specialties = new List<Specialty>()
         {
             new() { Id = 1, Name = "Advanced Weaponry", Description = "Development and production of cutting-edge military technology." },
@@ -83,8 +78,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
             new() { Id = 14, Name = "Film Industry", Description = "Production and distribution of motion pictures for entertainment." },
             new() { Id = 15, Name = "Medical Research", Description = "Development of new treatments, cures, and medical technologies." },
         };
-
-        _modelBuilder.Entity<Specialty>().HasData(specialties);
 
         var countries = new List<Country>()
         {
@@ -250,8 +243,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
             },
         };
 
-        _modelBuilder.Entity<Country>().HasData(countries);
-
         var characters = new List<Character>()
         {
             new()
@@ -261,7 +252,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
                 Description = "A brave warrior from the United States.",
                 BirthDate = new DateOnly(1990, 1, 1),
                 OriginCountry = countries.Single(c => c.Name == "United States"),
-                CurrentCountry = countries.Single(c => c.Name == "United States"),
                 PortraitUrl = "",
                 Power = 1
             },
@@ -272,7 +262,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
                 Description = "A theoretical physicist who developed the theory of relativity.",
                 BirthDate = new DateOnly(1879, 3, 14),
                 OriginCountry = countries.Single(c => c.Name == "Germany"),
-                CurrentCountry = countries.Single(c => c.Name == "United States"),
                 PortraitUrl = "",
                 Power = 1
             },
@@ -283,7 +272,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
                 Description = "A Renaissance polymath known for his art, inventions, and scientific studies.",
                 BirthDate = new DateOnly(1452, 4, 15),
                 OriginCountry = countries.Single(c => c.Name == "Nigeria"),
-                CurrentCountry = countries.Single(c => c.Name == "Australia"),
                 PortraitUrl = "",
                 Power = 1
             },
@@ -294,7 +282,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
                 Description = "A physicist and chemist who conducted pioneering research on radioactivity.",
                 BirthDate = new DateOnly(1867, 11, 7),
                 OriginCountry = countries.Single(c => c.Name == "Australia"),
-                CurrentCountry = countries.Single(c => c.Name == "France"),
                 PortraitUrl = "",
                 Power = 1
             },
@@ -305,7 +292,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
                 Description = "A fearless leader from Brazil.",
                 BirthDate = new DateOnly(1995, 7, 22),
                 OriginCountry = countries.Single(c => c.Name == "Brazil"),
-                CurrentCountry = countries.Single(c => c.Name == "Brazil"),
                 PortraitUrl = "",
                 Power = 1
             },
@@ -316,7 +302,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
                 Description = "A legendary hitman from the United States.",
                 BirthDate = new DateOnly(1964, 9, 19),
                 OriginCountry = countries.Single(c => c.Name == "United States"),
-                CurrentCountry = countries.Single(c => c.Name == "United States"),
                 PortraitUrl = "",
                 Power = 1
             },
@@ -327,7 +312,6 @@ internal class DataSeeder(ModelBuilder modelBuilder)
                 Description = "A legendary warrior from Japan.",
                 BirthDate = new DateOnly(1991, 2, 28),
                 OriginCountry = countries.Single(c => c.Name == "Japan"),
-                CurrentCountry = countries.Single(c => c.Name == "Japan"),
                 PortraitUrl = "",
                 Power = 1
             },
@@ -338,12 +322,30 @@ internal class DataSeeder(ModelBuilder modelBuilder)
                 Description = "A leader of the Indian independence movement and advocate of nonviolent resistance.",
                 BirthDate = new DateOnly(1869, 10, 2),
                 OriginCountry = countries.Single(c => c.Name == "India"),
-                CurrentCountry = countries.Single(c => c.Name == "India"),
                 PortraitUrl = "",
                 Power = 1
             }
         };
 
-        _modelBuilder.Entity<Character>().HasData(characters);
+        context.Languages.AddRange(languages);
+        context.SaveChanges();
+
+        context.Religions.AddRange(religions);
+        context.SaveChanges();
+
+        context.GovernanceTypes.AddRange(governanceTypes);
+        context.SaveChanges();
+
+        context.NaturalResources.AddRange(naturalResources);
+        context.SaveChanges();
+
+        context.Specialties.AddRange(specialties);
+        context.SaveChanges();
+
+        context.Countries.AddRange(countries);
+        context.SaveChanges();
+
+        context.Characters.AddRange(characters);
+        context.SaveChanges();
     }
 }

@@ -6,7 +6,6 @@ public class Character
     public string Description { get; set; } = default!;
     public DateOnly BirthDate { get; set; }
     public Country OriginCountry { get; set; } = default!;
-    public Country CurrentCountry { get; set; } = default!;
     public string PortraitUrl { get; set; } = default!;
     public int Power { get; set; }
 

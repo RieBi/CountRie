@@ -1,9 +1,8 @@
 ﻿using Data.ModelConfigurations;
-using Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data;
-public class DataContext(DbContextOptions<DataContext> options) : DbContext(options), IDataContext
+public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
 {
     public DbSet<Battle> Battles { get; set; }
     public DbSet<Character> Characters { get; set; }
@@ -25,8 +24,5 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
         modelBuilder.ApplyConfiguration(new LanguageConfiguration());
         modelBuilder.ApplyConfiguration(new ReligionConfiguration());
         modelBuilder.ApplyConfiguration(new SpecialtyConfiguration());
-
-        var dataSeeder = new DataSeeder(modelBuilder);
-        dataSeeder.ApplySeeding();
     }
 }

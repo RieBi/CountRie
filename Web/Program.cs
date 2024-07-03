@@ -9,6 +9,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreConnection")));
 
+builder.Services.AddScoped<IDataSeeder, DataSeeder>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,5 +31,11 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+using (var scope = app.Services.CreateScope())
+{
+    var seeder = scope.ServiceProvider.GetService<IDataSeeder>();
+    seeder?.ApplySeeding();
+}
 
 await app.RunAsync();

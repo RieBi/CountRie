@@ -26,6 +26,10 @@ internal class CountryConfiguration : IEntityTypeConfiguration<Country>
             .HasMany(f => f.Specialties)
             .WithMany(f => f.Countries);
 
+        builder
+            .HasMany(f => f.Characters)
+            .WithOne(f => f.OriginCountry);
+
         builder.Property(f => f.Name).HasMaxLength(DataConfig.NameLength);
         builder.Property(f => f.Description).HasMaxLength(DataConfig.DescriptionLength);
         builder.Property(f => f.Capital).HasMaxLength(DataConfig.NameLength);

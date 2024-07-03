@@ -6,8 +6,9 @@ internal class CharacterConfiguration : IEntityTypeConfiguration<Character>
 {
     public void Configure(EntityTypeBuilder<Character> builder)
     {
-        builder.HasOne(f => f.CurrentCountry);
-        builder.HasOne(f => f.OriginCountry);
+        builder
+            .HasOne(f => f.OriginCountry)
+            .WithMany(f => f.Characters);
 
         builder
             .HasMany(f => f.Battles);

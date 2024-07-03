@@ -15,4 +15,5 @@ public class Country
 
     public ICollection<NaturalResource> NaturalResources { get; set; } = default!;
     public ICollection<Specialty> Specialties { get; set; } = default!;
+    public ICollection<Character> Characters { get; set; } = default!;
 }
