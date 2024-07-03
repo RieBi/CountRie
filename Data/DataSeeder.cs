@@ -59,5 +59,26 @@ internal class DataSeeder(ModelBuilder modelBuilder)
         };
 
         _modelBuilder.Entity<NaturalResource>().HasData(naturalResources);
+
+        var specialties = new List<Specialty>()
+        {
+            new() { Name = "Advanced Weaponry", Description = "Development and production of cutting-edge military technology." },
+            new() { Name =  "Special Forces", Description = "Elite military units trained for unconventional warfare." },
+            new() { Name = "Aerospace Engineering", Description = "Designing and building aircraft, spacecraft, and related systems." },
+            new() { Name = "Space Exploration", Description = "Pioneering missions to understand and explore space beyond Earth." },
+            new() { Name = "Diplomacy", Description =  "Skillful negotiation and international relations management." },
+            new() { Name = "Luxury Goods", Description = "Production of high-end, handcrafted items with exceptional quality." },
+            new() { Name = "Sustainable Agriculture", Description = "Environmentally friendly practices for food production." },
+            new() { Name = "Financial Services", Description = "Offering a wide range of financial products and services." },
+            new() { Name = "Tourism", Description = "Attracting and managing visitors for leisure, cultural, and business purposes." },
+            new() { Name = "Shipbuilding", Description = "Designing and constructing ships and other large vessels." },
+            new() { Name = "Nuclear Technology", Description = "Development and application of nuclear power and related technologies." },
+            new() { Name = "Artificial Intelligence", Description = "Creating intelligent machines that can perform tasks typically requiring human intelligence." },
+            new() { Name = "Renewable Energy", Description = "Harnessing power from sustainable sources like wind, solar, and geothermal energy." },
+            new() { Name = "Film Industry", Description = "Production and distribution of motion pictures for entertainment." },
+            new() { Name = "Medical Research", Description = "Development of new treatments, cures, and medical technologies." },
+        };
+
+        _modelBuilder.Entity<Specialty>.HasData(specialties);
     }
 }
