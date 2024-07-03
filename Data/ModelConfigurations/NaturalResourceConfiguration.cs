@@ -6,6 +6,10 @@ internal class NaturalResourceConfiguration : IEntityTypeConfiguration<NaturalRe
 {
     public void Configure(EntityTypeBuilder<NaturalResource> builder)
     {
+        builder
+            .HasMany(f => f.Countries)
+            .WithMany(f => f.NaturalResources);
+
         builder.Property(f => f.Name).HasMaxLength(DataConfig.NameLength);
         builder.Property(f => f.Description).HasMaxLength(DataConfig.DescriptionLength);
     }
