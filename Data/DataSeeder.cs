@@ -242,5 +242,90 @@ internal class DataSeeder(ModelBuilder modelBuilder)
 
         _modelBuilder.Entity<Country>().HasData(countries);
 
+        var characters = new List<Character>()
+        {
+            new()
+            {
+                Name = "John Smith",
+                Description = "A brave warrior from the United States.",
+                BirthDate = new DateOnly(1990, 1, 1),
+                OriginCountry = countries.Single(c => c.Name == "United States"),
+                CurrentCountry = countries.Single(c => c.Name == "United States"),
+                PortraitUrl = "",
+                Power = 1
+            },
+            new()
+            {
+                Name = "Albert Einstein",
+                Description = "A theoretical physicist who developed the theory of relativity.",
+                BirthDate = new DateOnly(1879, 3, 14),
+                OriginCountry = countries.Single(c => c.Name == "Germany"),
+                CurrentCountry = countries.Single(c => c.Name == "United States"),
+                PortraitUrl = "",
+                Power = 1
+            },
+            new()
+            {
+                Name = "Leonardo da Vinci",
+                Description = "A Renaissance polymath known for his art, inventions, and scientific studies.",
+                BirthDate = new DateOnly(1452, 4, 15),
+                OriginCountry = countries.Single(c => c.Name == "Nigeria"),
+                CurrentCountry = countries.Single(c => c.Name == "Australia"),
+                PortraitUrl = "",
+                Power = 1
+            },
+            new()
+            {
+                Name = "Marie Curie",
+                Description = "A physicist and chemist who conducted pioneering research on radioactivity.",
+                BirthDate = new DateOnly(1867, 11, 7),
+                OriginCountry = countries.Single(c => c.Name == "Australia"),
+                CurrentCountry = countries.Single(c => c.Name == "France"),
+                PortraitUrl = "",
+                Power = 1
+            },
+            new()
+            {
+                Name = "Carlos Silva",
+                Description = "A fearless leader from Brazil.",
+                BirthDate = new DateOnly(1995, 7, 22),
+                OriginCountry = countries.Single(c => c.Name == "Brazil"),
+                CurrentCountry = countries.Single(c => c.Name == "Brazil"),
+                PortraitUrl = "",
+                Power = 1
+            },
+            new()
+            {
+                Name = "John Wick",
+                Description = "A legendary hitman from the United States.",
+                BirthDate = new DateOnly(1964, 9, 19),
+                OriginCountry = countries.Single(c => c.Name == "United States"),
+                CurrentCountry = countries.Single(c => c.Name == "United States"),
+                PortraitUrl = "",
+                Power = 1
+            },
+            new()
+            {
+                Name = "Hiroshi Tanaka",
+                Description = "A legendary warrior from Japan.",
+                BirthDate = new DateOnly(1991, 2, 28),
+                OriginCountry = countries.Single(c => c.Name == "Japan"),
+                CurrentCountry = countries.Single(c => c.Name == "Japan"),
+                PortraitUrl = "",
+                Power = 1
+            },
+            new()
+            {
+                Name = "Mahatma Gandhi",
+                Description = "A leader of the Indian independence movement and advocate of nonviolent resistance.",
+                BirthDate = new DateOnly(1869, 10, 2),
+                OriginCountry = countries.Single(c => c.Name == "India"),
+                CurrentCountry = countries.Single(c => c.Name == "India"),
+                PortraitUrl = "",
+                Power = 1
+            }
+        };
+
+        _modelBuilder.Entity<Character>().HasData(characters);
     }
 }
