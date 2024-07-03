@@ -10,9 +10,13 @@ internal class DataSeeder(ModelBuilder modelBuilder)
         {
             new() { Name = "English", Description = "Widely spoken throughout the world." },
             new() { Name = "Spanish", Description = "Spoken in many countries around the world." },
+            new() { Name = "Portuguese", Description = "Romance language spoken in Portugal, Brazil, and several other countries." },
             new() { Name = "French", Description = "Romance language spoken in France and other countries." },
             new() { Name = "Mandarin Chinese", Description = "Most spoken language by native speakers in the world." },
             new() { Name = "Hindi", Description = "Official language of India and spoken widely in South Asia." },
+            new() { Name = "Russian", Description = "Slavic language spoken primarily in Russia and neighboring countries." },
+            new() { Name = "Japanese", Description = "Language spoken primarily in Japan." },
+            new() { Name = "German", Description = "Language spoken primarily in Germany, Austria, and parts of Switzerland." },
         };
 
         _modelBuilder.Entity<Language>().HasData(languages);
@@ -31,6 +35,7 @@ internal class DataSeeder(ModelBuilder modelBuilder)
         var governanceTypes = new List<GovernanceType>()
         {
             new() { Name = "Monarchy", Description = "Rule by a king or queen." },
+            new() { Name = "Constitutional Monarchy", Description = "A system of government in which a monarch shares power with a constitutionally organized government." },
             new() { Name = "Oligarchy", Description = "A form of government in which power is vested in a small group of people." },
             new() { Name = "Republic", Description = "A state in which supreme power is held by the people and their elected representatives." },
             new() { Name = "Dictatorship", Description = "A form of government in which one person or a small group holds absolute power." },
@@ -79,6 +84,163 @@ internal class DataSeeder(ModelBuilder modelBuilder)
             new() { Name = "Medical Research", Description = "Development of new treatments, cures, and medical technologies." },
         };
 
-        _modelBuilder.Entity<Specialty>.HasData(specialties);
+        _modelBuilder.Entity<Specialty>().HasData(specialties);
+
+        var countries = new List<Country>()
+        {
+            new()
+            {
+                Name = "United States",
+                Description = "A country of 50 states covering a vast swath of North America.",
+                Capital = "Washington, D.C.",
+                Population = 331000000,
+                Area = 9834000,
+                GovernanceType = governanceTypes.Single(gt => gt.Name == "Republic"),
+                IndependenceYear = 1776,
+                Language = languages.Single(l => l.Name == "English"),
+                Religion = religions.Single(r => r.Name == "Christianity"),
+                FlagUrl = "",
+                NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(4).ToList(),
+                Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(4).ToList()
+            },
+            new()
+            {
+                Name = "China",
+                Description = "The world's most populous country, located in East Asia.",
+                Capital = "Beijing",
+                Population = 1440000000,
+                Area = 9597000,
+                GovernanceType = governanceTypes.Single(gt => gt.Name == "Dictatorship"),
+                IndependenceYear = 1949,
+                Language = languages.Single(l => l.Name == "Mandarin Chinese"),
+                Religion = religions.Single(r => r.Name == "Buddhism"),
+                FlagUrl = "",
+                NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(5).ToList(),
+                Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(5).ToList()
+            },
+            new()
+            {
+                Name = "India",
+                Description = "A South Asian country known for its diverse culture and population.",
+                Capital = "New Delhi",
+                Population = 1393000000,
+                Area = 3287000,
+                GovernanceType = governanceTypes.Single(gt => gt.Name == "Republic"),
+                IndependenceYear = 1947,
+                Language = languages.Single(l => l.Name == "Hindi"),
+                Religion = religions.Single(r => r.Name == "Hinduism"),
+                FlagUrl = "",
+                NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(4).ToList(),
+                Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(3).ToList()
+            },
+            new()
+            {
+                Name = "France",
+                Description = "A Western European country known for its art, culture, and cuisine.",
+                Capital = "Paris",
+                Population = 67000000,
+                Area = 643801,
+                GovernanceType = governanceTypes.Single(gt => gt.Name == "Republic"),
+                IndependenceYear = 1789,
+                Language = languages.Single(l => l.Name == "French"),
+                Religion = religions.Single(r => r.Name == "Christianity"),
+                FlagUrl = "",
+                NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(3).ToList(),
+                Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(4).ToList()
+            },
+            new()
+            {
+                Name = "Brazil",
+                Description = "The largest country in South America known for its Amazon rainforest.",
+                Capital = "Brasília",
+                Population = 213000000,
+                Area = 8516000,
+                GovernanceType = governanceTypes.Single(gt => gt.Name == "Republic"),
+                IndependenceYear = 1822,
+                Language = languages.Single(l => l.Name == "Portuguese"),
+                Religion = religions.Single(r => r.Name == "Christianity"),
+                FlagUrl = "",
+                NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(5).ToList(),
+                Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(3).ToList()
+            },
+            new()
+            {
+                Name = "Russia",
+                Description = "The largest country in the world by area, located in Eurasia.",
+                Capital = "Moscow",
+                Population = 144000000,
+                Area = 17098242,
+                GovernanceType = governanceTypes.Single(gt => gt.Name == "Dictatorship"),
+                IndependenceYear = 1991,
+                Language = languages.Single(l => l.Name == "Russian"),
+                Religion = religions.Single(r => r.Name == "Christianity"),
+                FlagUrl = "",
+                NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(4).ToList(),
+                Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(5).ToList()
+            },
+            new()
+            {
+                Name = "Japan",
+                Description = "An island nation in East Asia known for its technology and culture.",
+                Capital = "Tokyo",
+                Population = 126000000,
+                Area = 377975,
+                GovernanceType = governanceTypes.Single(gt => gt.Name == "Constitutional Monarchy"),
+                IndependenceYear = 1947,
+                Language = languages.Single(l => l.Name == "Japanese"),
+                Religion = religions.Single(r => r.Name == "Buddhism"),
+                FlagUrl = "",
+                NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(3).ToList(),
+                Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(5).ToList()
+            },
+            new()
+            {
+                Name = "Germany",
+                Description = "A country in Central Europe known for its history and economy.",
+                Capital = "Berlin",
+                Population = 83000000,
+                Area = 357022,
+                GovernanceType = governanceTypes.Single(gt => gt.Name == "Republic"),
+                IndependenceYear = 1949,
+                Language = languages.Single(l => l.Name == "German"),
+                Religion = religions.Single(r => r.Name == "Christianity"),
+                FlagUrl = "",
+                NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(4).ToList(),
+                Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(4).ToList()
+            },
+            new()
+            {
+                Name = "Nigeria",
+                Description = "A West African country known for its diverse culture and large population.",
+                Capital = "Abuja",
+                Population = 206000000,
+                Area = 923769,
+                GovernanceType = governanceTypes.Single(gt => gt.Name == "Republic"),
+                IndependenceYear = 1960,
+                Language = languages.Single(l => l.Name == "English"),
+                Religion = religions.Single(r => r.Name == "Islam"),
+                FlagUrl = "",
+                NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(5).ToList(),
+                Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(3).ToList()
+            },
+            new()
+            {
+                Name = "Australia",
+                Description = "A country and continent surrounded by the Indian and Pacific oceans.",
+                Capital = "Canberra",
+                Population = 25000000,
+                Area = 7692000,
+                GovernanceType = governanceTypes.Single(gt => gt.Name == "Constitutional Monarchy"),
+                IndependenceYear = 1901,
+                Language = languages.Single(l => l.Name == "English"),
+                Religion = religions.Single(r => r.Name == "Christianity"),
+                FlagUrl = "",
+                NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(3).ToList(),
+                Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(4).ToList()
+            },
+        };
+
+        _modelBuilder.Entity<Country>().HasData(countries);
+
     }
 }
