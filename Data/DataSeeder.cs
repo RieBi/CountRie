@@ -38,5 +38,26 @@ internal class DataSeeder(ModelBuilder modelBuilder)
         };
 
         _modelBuilder.Entity<GovernanceType>().HasData(governanceTypes);
+
+        var naturalResources = new List<NaturalResource>()
+        {
+            new() { Name = "Iron Ore", Description = "Main source of iron for steel production." },
+            new() { Name = "Copper Ore", Description = "Used for electrical wiring, plumbing, and construction." },
+            new() { Name = "Gold", Description = "Precious metal used in jewelry, electronics, and investment." },
+            new() { Name = "Silver", Description = "Precious metal used in jewelry, electronics, and solar panels." },
+            new() { Name = "Bauxite", Description = "Main source of aluminum, used in construction, transportation, and packaging." },
+            new() { Name = "Lithium", Description = "Lightweight metal used in batteries for electronics and electric vehicles." },
+            new() { Name = "Diamond", Description = "Gemstone used in jewelry and industrial cutting tools." },
+            new() { Name = "Coal", Description = "Fossil fuel used for energy generation and industrial processes." },
+            new() { Name = "Salt", Description = "Mineral essential for human and animal health, used in food preservation and de-icing." },
+            new() { Name = "Gypsum", Description = "Mineral used in the production of plaster, drywall, and cement." },
+            new() { Name = "Limestone", Description = "Sedimentary rock used in construction materials, cement production, and agriculture." },
+            new() { Name = "Quartz", Description = "Most abundant mineral on Earth, used in electronics, glassmaking, and construction." },
+            new() { Name = "Potassium Chloride (Potash)", Description = "Mineral used as fertilizer to improve crop yields." },
+            new() { Name = "Timber", Description = "Wood obtained from trees, used for construction, furniture, and paper production." },
+            new() { Name = "Uranium", Description = "Radioactive element used in nuclear power generation." },
+        };
+
+        _modelBuilder.Entity<NaturalResource>().HasData(naturalResources);
     }
 }
