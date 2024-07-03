@@ -1,3 +1,4 @@
+using Application;
 using Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,10 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreConnection")));
+
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(typeof(MappingProfiles)));
 
 builder.Services.AddScoped<IDataSeeder, DataSeeder>();
 
