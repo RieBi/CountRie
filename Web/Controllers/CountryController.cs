@@ -1,10 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Queries.CountryList;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers;
-public class CountryController : Controller
+public class CountryController(IMediator mediator) : Controller
 {
-    public IActionResult Index()
+    private readonly IMediator _mediator = mediator;
+
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var countries = await _mediator.Send(new GetCountryListQuery());
+
+        return View(countries);
     }
 }

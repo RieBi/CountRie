@@ -1,5 +1,5 @@
 ﻿namespace Application.Queries.CountryList;
-internal class GetCountryListQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCountryListQuery, IList<CountryListDto>>
+public class GetCountryListQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCountryListQuery, IList<CountryListDto>>
 {
     private readonly DataContext _context = context;
     private readonly IMapper _mapper = mapper;

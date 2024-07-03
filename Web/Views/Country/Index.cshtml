@@ -1,3 +1,11 @@
-﻿@{
+﻿@using Application.Queries.CountryList
+@model IList<CountryListDto>
+
+@{
     ViewData["Title"] = "Countries";
+}
+
+@foreach (var c in Model)
+{
+    <p>@c.Name</p>
 }

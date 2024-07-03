@@ -1,4 +1,4 @@
 ﻿namespace Application.Queries.CountryList;
-internal class GetCountryListQuery : IRequest<IList<CountryListDto>>
+public class GetCountryListQuery : IRequest<IList<CountryListDto>>
 {
 }
