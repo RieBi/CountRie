@@ -13,4 +13,14 @@ public class CountryController(IMediator mediator) : Controller
 
         return View(countries);
     }
+
+    [HttpGet("[controller]/{name}")]
+    public async Task<IActionResult> Details(string name)
+    {
+        var country = await _mediator.Send(new GetCountryDetailsQuery(name));
+        if (country is null)
+            return NotFound();
+
+        return View(country);
+    }
 }

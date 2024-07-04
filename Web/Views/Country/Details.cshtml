@@ -1,0 +1,13 @@
+﻿@using Application.Queries.CountryList
+@model CountryDetailsDto
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <h1>@Model.Name</h1>
+        <p>@Model.Description</p>
+    </div>
+</div>
