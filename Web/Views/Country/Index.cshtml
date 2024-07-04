@@ -18,16 +18,22 @@
                     <p class="lead">@c.Description</p>
                     <hr class="my-4">
                     <p>
-                        <span class="material-symbols-outlined">account_balance</span>
-                        <strong>Governance Type:</strong> @c.GovernanceType.Name
+                        <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-title="Governance type">account_balance</span>
+                        <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@c.GovernanceType.Description">
+                            @c.GovernanceType.Name
+                        </span>
                     </p>
                     <p>
-                        <span class="material-symbols-outlined">language</span>
-                        <strong>Language:</strong> @c.Language.Name
+                        <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-title="Language">language</span>
+                        <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@c.Language.Description">
+                            @c.Language.Name
+                        </span>
                     </p>
                     <p>
-                        <span class="material-symbols-outlined">church</span>
-                        <strong>Religion:</strong> @c.Religion.Name
+                        <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-title="Religion">church</span>
+                        <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@c.Religion.Description">
+                            @c.Religion.Name
+                        </span>
                     </p>
                 </div>
             </div>
