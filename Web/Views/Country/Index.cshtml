@@ -9,7 +9,7 @@
 {
     <div class="container mt-5">
         <div class="p-5 bg-light rounded-3">
-            <div class="row">
+            <div class="row p-5 bg-light rounded-3">
                 <div class="col-md-4">
                     <img src="https://placehold.co/600x600" class="img-fluid rounded" alt="Country Image">
                 </div>
@@ -17,9 +17,18 @@
                     <h1 class="display-4">@c.Name</h1>
                     <p class="lead">@c.Description</p>
                     <hr class="my-4">
-                    <p><strong>Governance Type:</strong> @c.GovernanceType.Name</p>
-                    <p><strong>Language:</strong> @c.Language.Name</p>
-                    <p><strong>Religion:</strong> @c.Religion.Name</p>
+                    <p>
+                        <span class="material-symbols-outlined">account_balance</span>
+                        <strong>Governance Type:</strong> @c.GovernanceType.Name
+                    </p>
+                    <p>
+                        <span class="material-symbols-outlined">language</span>
+                        <strong>Language:</strong> @c.Language.Name
+                    </p>
+                    <p>
+                        <span class="material-symbols-outlined">church</span>
+                        <strong>Religion:</strong> @c.Religion.Name
+                    </p>
                 </div>
             </div>
         </div>
