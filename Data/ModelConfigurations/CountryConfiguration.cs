@@ -34,5 +34,7 @@ internal class CountryConfiguration : IEntityTypeConfiguration<Country>
         builder.Property(f => f.Description).HasMaxLength(DataConfig.DescriptionLength);
         builder.Property(f => f.Capital).HasMaxLength(DataConfig.NameLength);
         builder.Property(f => f.FlagUrl).HasMaxLength(DataConfig.UrlLength);
+
+        builder.HasIndex(f => f.Name).IsUnique();
     }
 }
