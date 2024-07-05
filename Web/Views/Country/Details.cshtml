@@ -21,7 +21,9 @@
         <div class="col-md-8">
             <h1 class="display-1">@Model.Name</h1>
             <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@Model.GovernanceType.Description">
-                @Model.GovernanceType.Name
+                <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Governance type">account_balance</span>
+
+                <span >@Model.GovernanceType.Name</span>
             </span>
             <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@Model.Language.Description">
                 @Model.Language.Name

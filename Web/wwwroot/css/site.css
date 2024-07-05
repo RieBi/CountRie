@@ -25,3 +25,9 @@ body {
     vertical-align: -25%;
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
 }
+
+.custom-tooltip {
+    --bs-tooltip-bg: darkviolet;
+    --bs-tooltip-opacity: 100;
+    --bs-tooltip-zindex: 10000;
+}
