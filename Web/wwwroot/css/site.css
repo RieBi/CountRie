@@ -36,3 +36,13 @@ body {
     color: darkviolet;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
+
+.anchor-link {
+    visibility: hidden;
+    text-decoration: none;
+    color: violet;
+}
+
+.anchor-base:hover .anchor-link {
+    visibility: visible;
+}

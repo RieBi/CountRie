@@ -14,7 +14,10 @@
                     <img src="https://placehold.co/600x600" class="img-fluid rounded" alt="Country Image">
                 </div>
                 <div class="col-md-8">
+                    <div class="anchor-base">
                     <a id="@c.Name" asp-action="@c.Name" class="text-decoration-none"><h1 class="display-4 d-inline-block">@c.Name</h1></a>
+                    <a href="#@c.Name" class="display-4 anchor-link d-inline-block mx-2">#</a>
+                    </div>
                     <p class="lead">@c.Description</p>
                     <hr class="my-4">
                     <p>
