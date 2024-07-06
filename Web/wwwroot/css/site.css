@@ -31,3 +31,8 @@ body {
     --bs-tooltip-opacity: 100;
     --bs-tooltip-zindex: 10000;
 }
+
+.text-violet {
+    color: darkviolet;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
