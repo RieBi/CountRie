@@ -74,7 +74,11 @@
             <h2>Specialties</h2>
             @foreach (var specialty in Model.Specialties)
             {
-                <p>@specialty.Name - @specialty.Description</p>
+                <p>
+                    <span class="badge text-bg-light border fw-medium fs-6">
+                        <span class="badge custom-badge-pink">@specialty.Name</span> - @specialty.Description
+                    </span>
+                </p>
             }
         </div>
     </div>
