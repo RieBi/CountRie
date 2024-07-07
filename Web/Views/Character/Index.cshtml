@@ -22,9 +22,11 @@
                     <hr class="my-4">
                     <p>
                         <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-title="Origin country">flag</span>
-                        <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@c.OriginCountry.Description">
-                            @c.OriginCountry.Name
-                        </span>
+                        <a asp-controller="Country" asp-action="@c.OriginCountry.Name">
+                            <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@c.OriginCountry.Description">
+                                @c.OriginCountry.Name
+                            </span>
+                        </a>
                     </p>
                     <p>
                         <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-title="Power">bolt</span>
