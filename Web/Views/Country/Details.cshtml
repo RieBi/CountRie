@@ -65,4 +65,13 @@
             }
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <h2>Specialties</h2>
+            @foreach (var specialty in Model.Specialties)
+            {
+                <p>@specialty.Name - @specialty.Description</p>
+            }
+        </div>
+    </div>
 </div>
