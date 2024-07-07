@@ -56,3 +56,21 @@ body {
 .anchor-base:hover .anchor-link {
     visibility: visible;
 }
+
+.w-third {
+    width: 33.3%;
+}
+
+.ship {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.bug {
+    outline: 5px solid red;
+}
+
+.country-info {
+    overflow: hidden;
+}

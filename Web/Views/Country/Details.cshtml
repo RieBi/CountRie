@@ -15,23 +15,23 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <img src="https://placehold.co/600x600" class="img-fluid rounded mb-3" alt="Country Image">
-            <div class="badge text-bg-secondary fs-6 my-1">
-                <span class="material-symbols-outlined">things_to_do</span>
-                Capital: <span class="text-violet">@Model.Capital</span>
-            </div>
-            <div class="badge text-bg-secondary fs-6 my-1">
-                <span class="material-symbols-outlined">groups</span>
-                Population: <span class="text-violet">@Model.Population.ToString("###,###")</span>
-            </div>
-            <div class="badge text-bg-secondary fs-6 my-1">
-                <span class="material-symbols-outlined">globe</span>
-                Area: <span class="text-violet">@Model.Area.ToString("###,###") km<sup>2</sup></span>
-            </div>
+        <div class="col">
+            <div class="col-md-4 ship">
+                <img src="https://placehold.co/600x600" class="img-fluid rounded mb-3" alt="Country Image">
+                <div class="badge text-bg-secondary fs-6 my-1">
+                    <span class="material-symbols-outlined">things_to_do</span>
+                    Capital: <span class="text-violet">@Model.Capital</span>
+                </div>
+                <div class="badge text-bg-secondary fs-6 my-1">
+                    <span class="material-symbols-outlined">groups</span>
+                    Population: <span class="text-violet">@Model.Population.ToString("###,###")</span>
+                </div>
+                <div class="badge text-bg-secondary fs-6 my-1">
+                    <span class="material-symbols-outlined">globe</span>
+                    Area: <span class="text-violet">@Model.Area.ToString("###,###") km<sup>2</sup></span>
+                </div>
 
-        </div>
-        <div class="col-md-8">
+            </div>
             <h1 class="display-1">@Model.Name</h1>
             <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@Model.GovernanceType.Description">
                 <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
