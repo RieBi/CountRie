@@ -1,4 +1,5 @@
 ﻿using Application.Queries.CharacterQueries;
+using Application.Queries.CountryQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,5 +13,15 @@ public class CharacterController(IMediator mediator) : Controller
         var characters = await _mediator.Send(new GetCharacterListQuery());
 
         return View(characters);
+    }
+
+    [HttpGet("[controller]/{name}")]
+    public async Task<IActionResult> Details(string name)
+    {
+        var character = await _mediator.Send(new GetCharacterDetailsQuery(name));
+        if (character is null || !ModelState.IsValid)
+            return NotFound();
+
+        return View(character);
     }
 }

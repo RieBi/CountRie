@@ -6,3 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Major Code Smell", "S6934:A Route attribute should be added to the controller when a route template is specified at the action level", Justification = "<Pending>", Scope = "type", Target = "~T:Web.Controllers.CountryController")]
+[assembly: SuppressMessage("Major Code Smell", "S6934:A Route attribute should be added to the controller when a route template is specified at the action level", Justification = "<Pending>", Scope = "type", Target = "~T:Web.Controllers.CharacterController")]
