@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers;
+
 public class CountryController(IMediator mediator) : Controller
 {
     private readonly IMediator _mediator = mediator;
@@ -18,7 +19,7 @@ public class CountryController(IMediator mediator) : Controller
     public async Task<IActionResult> Details(string name)
     {
         var country = await _mediator.Send(new GetCountryDetailsQuery(name));
-        if (country is null)
+        if (country is null || !ModelState.IsValid)
             return NotFound();
 
         return View(country);
