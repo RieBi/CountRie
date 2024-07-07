@@ -1,4 +1,4 @@
-﻿using Application.Queries.CountryList;
+﻿using Application.Queries.Country;
 using Data.Models;
 
 namespace Application;

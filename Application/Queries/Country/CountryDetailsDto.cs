@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Queries.CountryList;
+namespace Application.Queries.Country;
 public class CountryDetailsDto
 {
     public int Id { get; set; }

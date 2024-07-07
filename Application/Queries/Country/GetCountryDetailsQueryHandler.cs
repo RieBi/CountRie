@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Queries.CountryList;
+namespace Application.Queries.Country;
 public class GetCountryDetailsQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCountryDetailsQuery, CountryDetailsDto?>
 {
     private readonly DataContext _context = context;
