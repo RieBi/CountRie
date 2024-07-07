@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Queries.CharacterQueries;
-internal class GetCharacterListQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCharacterListQuery, IList<CharacterListDto>>
+public class GetCharacterListQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCharacterListQuery, IList<CharacterListDto>>
 {
     private readonly DataContext _context = context;
     private readonly IMapper _mapper = mapper;
