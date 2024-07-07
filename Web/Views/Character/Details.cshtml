@@ -1,0 +1,46 @@
+﻿@using Application.Queries.CharacterQueries
+@model CharacterDetailsDto
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="container mt-1">
+    <div class="row">
+        <div class="col h3">
+            <a href=".#@Model.Name" class="nav-link d-inline">
+                <span class="material-symbols-outlined fs-2">arrow_back</span>
+                Back
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <div class="col-md-4 ship">
+                <img src="https://placehold.co/600x600" class="img-fluid rounded mb-3" alt="Character Image">
+            </div>
+            <h1 class="display-1">@Model.Name</h1>
+            <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@Model.OriginCountry.Description">
+                <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
+                      data-bs-placement="bottom" data-bs-title="Origin Country">flag</span>
+                @Model.OriginCountry.Name
+            </span>
+            <span class="badge text-bg-secondary fs-6">
+                <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
+                      data-bs-placement="bottom" data-bs-title="Birth Date">calendar_month</span>
+                @Model.BirthDate
+            </span>
+            <span class="badge text-bg-secondary fs-6">
+                <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
+                      data-bs-placement="bottom" data-bs-title="Power">bolt</span>
+                @Model.Power
+            </span>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+</div>
