@@ -45,4 +45,37 @@
             <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
     </div>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <h2 class="mb-3">Battles</h2>
+            <div class="row">
+                @if (Model.Battles.Count == 0)
+                {
+                    <p>The character hasn't fought in any battles yet.</p>
+                }
+                @foreach (var battle in Model.Battles)
+                {
+                    <div class="col-4">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="card-title">@battle.Name</h4>
+                            </div>
+                            <img src="https://placehold.co/600x600" class="" />
+                            <div class="card-body">
+                                <p class="card-text">Your ad could be here</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <button class="btn btn-info">
+                        Create a battle
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
