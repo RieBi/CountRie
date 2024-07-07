@@ -1,10 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Queries.CharacterQueries;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers;
-public class CharacterController : Controller
+public class CharacterController(IMediator mediator) : Controller
 {
-    public IActionResult Index()
+    private readonly IMediator _mediator = mediator;
+
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var characters = await _mediator.Send(new GetCharacterListQuery());
+
+        return View(characters);
     }
 }
