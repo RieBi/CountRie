@@ -1,4 +1,4 @@
-﻿using Application.Queries.Country;
+﻿using Application.Queries.CountryQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

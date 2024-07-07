@@ -1,6 +1,6 @@
 ﻿using Data.Models;
 
-namespace Application.Queries.Country;
+namespace Application.Queries.CountryQueries;
 public class CountryListDto
 {
     public int Id { get; set; }
