@@ -84,4 +84,26 @@
             }
         </div>
     </div>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <h2 class="mb-3">Characters</h2>
+            <div class="row">
+                @foreach (var character in Model.Characters)
+                {
+                    <div class="col-4">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="card-title">@character.Name</h4>
+                            </div>
+                                <img src="https://placehold.co/600x600" class="" />
+                            <div class="card-body">
+                                <p class="card-text">@character.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
 </div>
