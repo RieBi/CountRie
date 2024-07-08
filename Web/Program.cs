@@ -1,4 +1,5 @@
 using Application;
+using Application.Services.BattleManagement;
 using Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,7 @@ builder.Services.AddAutoMapper(typeof(MappingProfiles));
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(typeof(MappingProfiles)));
 
 builder.Services.AddScoped<IDataSeeder, DataSeeder>();
+builder.Services.AddScoped<IBattleService, BattleService>();
 
 var app = builder.Build();
 
