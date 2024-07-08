@@ -1,9 +1,5 @@
 ﻿using Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Services.BattleManagement;
 public class BattleService(DataContext context) : IBattleService
@@ -34,14 +30,20 @@ public class BattleService(DataContext context) : IBattleService
         return info.Entity;
     }
 
-    public Task<Battle> ExecuteBattleAsync(Character character)
+    public async Task<Battle> ExecuteBattleAsync(Character character)
     {
-        throw new NotImplementedException();
+        var characterB = GetRandomOpponent(character);
+        return await ExecuteBattleAsync(character, characterB);
     }
 
     public Character GetRandomOpponent(Character excludedCharacter)
     {
-        throw new NotImplementedException();
+        var randomCharacter = _context.Characters
+            .Where(f => f.Id != excludedCharacter.Id)
+            .OrderBy(f => Guid.NewGuid())
+            .First();
+
+        return randomCharacter;
     }
 
     private readonly string[] battleTitles = [
