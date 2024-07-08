@@ -11,6 +11,8 @@ public class MappingProfiles : Profile
         CreateMap<Country, CountryDetailsDto>();
 
         CreateMap<Character, CharacterListDto>();
-        CreateMap<Character, CharacterDetailsDto>();
+        CreateMap<Character, CharacterDetailsDto>()
+            .ForMember(f => f.Battles, 
+            o => o.MapFrom(f => f.AllBattles()));
     }
 }

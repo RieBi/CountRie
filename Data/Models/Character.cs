@@ -12,5 +12,11 @@ public class Character
     public ICollection<Battle> WonBattles { get; set; } = default!;
     public ICollection<Battle> LostBattles { get; set; } = default!;
 
-    public IEnumerable<Battle> Battles => WonBattles.Concat(LostBattles);
+    public IEnumerable<Battle> AllBattles()
+    {
+        if (WonBattles is null || LostBattles is null)
+            return [];
+        else
+            return WonBattles.Concat(LostBattles);
+    }
 }
