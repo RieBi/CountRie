@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 
 namespace Application.Services.BattleManagement;
@@ -39,6 +40,7 @@ public class BattleService(DataContext context) : IBattleService
     public Character GetRandomOpponent(Character excludedCharacter)
     {
         var randomCharacter = _context.Characters
+            .Include(f => f.OriginCountry)
             .Where(f => f.Id != excludedCharacter.Id)
             .OrderBy(f => Guid.NewGuid())
             .First();

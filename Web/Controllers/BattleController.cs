@@ -15,12 +15,12 @@ public class BattleController(IMediator mediator) : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateRandomBattle(Character character)
+    public async Task<IActionResult> CreateRandomBattle(int characterId)
     {
         if (!ModelState.IsValid)
             return NotFound();
 
-        await _mediator.Send(new CreateRandomBattleCommand(character));
+        await _mediator.Send(new CreateRandomBattleCommand(characterId));
 
         return NoContent();
     }

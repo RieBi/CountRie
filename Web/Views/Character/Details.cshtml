@@ -71,9 +71,11 @@
             </div>
             <div class="row">
                 <div class="col-md-2">
-                    <button class="btn btn-info">
-                        Create a battle
-                    </button>
+                    <form asp-controller="Battle" asp-action="CreateRandomBattle" asp-route-characterId="@Model.Id">
+                        <button type="submit" class="btn btn-info">
+                            Create a battle
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
