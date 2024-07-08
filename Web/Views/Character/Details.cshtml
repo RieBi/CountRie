@@ -56,7 +56,7 @@
                 }
                 @foreach (var battle in Model.Battles)
                 {
-                    <div class="col-4">
+                    <div id="b-@battle.Id" class="col-4">
                         <div class="card mb-3">
                             <div class="card-header">
                                 <h4 class="card-title">@battle.Name</h4>

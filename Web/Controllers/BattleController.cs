@@ -20,8 +20,8 @@ public class BattleController(IMediator mediator) : Controller
         if (!ModelState.IsValid)
             return NotFound();
 
-        await _mediator.Send(new CreateRandomBattleCommand(characterId));
+        var newBattleId = await _mediator.Send(new CreateRandomBattleCommand(characterId));
 
-        return NoContent();
+        return Redirect(Request.Headers.Referer.ToString() + $"#b-{newBattleId}");
     }
 }
