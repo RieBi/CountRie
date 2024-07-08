@@ -9,5 +9,8 @@ public class Character
     public string PortraitUrl { get; set; } = default!;
     public int Power { get; set; }
 
-    public ICollection<Battle> Battles { get; set; } = default!;
+    public ICollection<Battle> WonBattles { get; set; } = default!;
+    public ICollection<Battle> LostBattles { get; set; } = default!;
+
+    public IEnumerable<Battle> Battles => WonBattles.Concat(LostBattles);
 }

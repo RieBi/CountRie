@@ -11,7 +11,12 @@ internal class CharacterConfiguration : IEntityTypeConfiguration<Character>
             .WithMany(f => f.Characters);
 
         builder
-            .HasMany(f => f.Battles);
+            .HasMany(f => f.WonBattles)
+            .WithOne(f => f.WinnerCharacter);
+
+        builder
+            .HasMany(f => f.LostBattles)
+            .WithOne(f => f.LoserCharacter);
 
         builder.Property(f => f.Name).HasMaxLength(DataConfig.NameLength);
         builder.Property(f => f.Description).HasMaxLength(DataConfig.DescriptionLength);
