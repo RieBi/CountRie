@@ -93,7 +93,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 IndependenceYear = 1776,
                 Language = languages.Single(l => l.Name == "English"),
                 Religion = religions.Single(r => r.Name == "Christianity"),
-                FlagUrl = "",
+                FlagUrl = "https://cdn.britannica.com/33/4833-050-F6E415FE/Flag-United-States-of-America.jpg",
                 NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(4).ToList(),
                 Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(4).ToList()
             },
@@ -109,7 +109,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 IndependenceYear = 1949,
                 Language = languages.Single(l => l.Name == "Mandarin Chinese"),
                 Religion = religions.Single(r => r.Name == "Buddhism"),
-                FlagUrl = "",
+                FlagUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/1024px-Flag_of_the_People%27s_Republic_of_China.svg.png",
                 NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(5).ToList(),
                 Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(5).ToList()
             },
@@ -125,7 +125,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 IndependenceYear = 1947,
                 Language = languages.Single(l => l.Name == "Hindi"),
                 Religion = religions.Single(r => r.Name == "Hinduism"),
-                FlagUrl = "",
+                FlagUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCnQXo7eUZqYL9_br-pTPTkbowPp_JvvFdqw&s",
                 NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(4).ToList(),
                 Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(3).ToList()
             },
@@ -141,7 +141,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 IndependenceYear = 1789,
                 Language = languages.Single(l => l.Name == "French"),
                 Religion = religions.Single(r => r.Name == "Christianity"),
-                FlagUrl = "",
+                FlagUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/255px-Flag_of_France.svg.png",
                 NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(3).ToList(),
                 Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(4).ToList()
             },
@@ -157,7 +157,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 IndependenceYear = 1822,
                 Language = languages.Single(l => l.Name == "Portuguese"),
                 Religion = religions.Single(r => r.Name == "Christianity"),
-                FlagUrl = "",
+                FlagUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK2jkg7Ap2YPrynwqwolB-bvIauF7sLXAFqg&s",
                 NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(5).ToList(),
                 Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(3).ToList()
             },
@@ -173,7 +173,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 IndependenceYear = 1991,
                 Language = languages.Single(l => l.Name == "Russian"),
                 Religion = religions.Single(r => r.Name == "Christianity"),
-                FlagUrl = "",
+                FlagUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSBSsV2up86rvStJSG-tDxoYiHfyl-1DVY5A&s",
                 NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(4).ToList(),
                 Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(5).ToList()
             },
@@ -189,7 +189,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 IndependenceYear = 1947,
                 Language = languages.Single(l => l.Name == "Japanese"),
                 Religion = religions.Single(r => r.Name == "Buddhism"),
-                FlagUrl = "",
+                FlagUrl = "https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg",
                 NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(3).ToList(),
                 Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(5).ToList()
             },
@@ -205,7 +205,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 IndependenceYear = 1949,
                 Language = languages.Single(l => l.Name == "German"),
                 Religion = religions.Single(r => r.Name == "Christianity"),
-                FlagUrl = "",
+                FlagUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
                 NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(4).ToList(),
                 Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(4).ToList()
             },
@@ -221,7 +221,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 IndependenceYear = 1960,
                 Language = languages.Single(l => l.Name == "English"),
                 Religion = religions.Single(r => r.Name == "Islam"),
-                FlagUrl = "",
+                FlagUrl = "https://upload.wikimedia.org/wikipedia/commons/7/79/Flag_of_Nigeria.svg",
                 NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(5).ToList(),
                 Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(3).ToList()
             },
@@ -237,7 +237,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 IndependenceYear = 1901,
                 Language = languages.Single(l => l.Name == "English"),
                 Religion = religions.Single(r => r.Name == "Christianity"),
-                FlagUrl = "",
+                FlagUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_Australia.svg/2560px-Flag_of_Australia.svg.png",
                 NaturalResources = naturalResources.OrderBy(nr => Guid.NewGuid()).Take(3).ToList(),
                 Specialties = specialties.OrderBy(s => Guid.NewGuid()).Take(4).ToList()
             },
