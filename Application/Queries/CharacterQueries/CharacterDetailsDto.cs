@@ -10,6 +10,4 @@ public class CharacterDetailsDto
     public Country OriginCountry { get; set; } = default!;
     public string PortraitUrl { get; set; } = default!;
     public int Power { get; set; }
-
-    public ICollection<Battle> Battles { get; set; } = default!;
 }

@@ -12,8 +12,6 @@ public class GetCharacterDetailsQueryHandler(DataContext context, IMapper mapper
     {
         var character = await _context.Characters
             .Include(f => f.OriginCountry)
-            .Include(f => f.WonBattles)
-            .Include(f => f.LostBattles)
             .FirstOrDefaultAsync(f => f.Name == request.Name, cancellationToken);
 
         var characterDto = _mapper.Map<CharacterDetailsDto>(character);

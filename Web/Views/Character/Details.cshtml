@@ -1,5 +1,5 @@
-﻿@using Application.Queries.CharacterQueries
-@model CharacterDetailsDto
+﻿@using Web.ViewModels.Characters
+@model CharacterDetailsViewModel
 
 @{
     ViewData["Title"] = Model.Name;
@@ -57,6 +57,12 @@
                 @foreach (var battle in Model.Battles)
                 {
                     <div id="b-@battle.Id" class="col-4">
+                        <div class="m-4">
+                            <h3 class="display-3">@battle.Name</h3>
+                            <p>@battle.Date.ToLongDateString()</p>
+                            <p>@battle.WinnerCharacter.Name VS @battle.LoserCharacter</p>
+                            <p>@battle.Country.Name</p>
+                        </div>
                         <div class="card mb-3">
                             <div class="card-header">
                                 <h4 class="card-title">@battle.Name</h4>
