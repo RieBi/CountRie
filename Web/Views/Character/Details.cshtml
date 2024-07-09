@@ -97,6 +97,12 @@
                             Create battle
                         </button>
                     </form>
+                    @if (TempData.ContainsKey("Error"))
+                    {
+                        <div class="alert alert-danger m-1" role="alert">
+                            @TempData["Error"]
+                        </div>
+                    }
                 </div>
             </div>
         </div>
