@@ -27,6 +27,10 @@ public class BattleService(DataContext context) : IBattleService
         };
 
         var info = await _context.AddAsync(battle);
+
+        winner.Power += 2;
+        loser.Power += 1;
+
         await _context.SaveChangesAsync();
         return info.Entity;
     }
