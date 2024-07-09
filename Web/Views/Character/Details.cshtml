@@ -58,11 +58,12 @@
                 {
                     <div id="b-@battle.Id" class="col-4">
                         <div class="m-4">
-                            <h3 class="display-3">@battle.Name</h3>
+                            <h3>@battle.Name</h3>
                             <p>@battle.Date.ToLongDateString()</p>
-                            <p>@battle.WinnerCharacter.Name VS @battle.LoserCharacter</p>
+                            <p>@battle.WinnerCharacter.Name VS @battle.LoserCharacter.Name</p>
                             <p>@battle.Country.Name</p>
                         </div>
+                        <!--
                         <div class="card mb-3">
                             <div class="card-header">
                                 <h4 class="card-title">@battle.Name</h4>
@@ -72,6 +73,7 @@
                                 <p class="card-text">Your ad could be here</p>
                             </div>
                         </div>
+                        -->
                     </div>
                 }
             </div>

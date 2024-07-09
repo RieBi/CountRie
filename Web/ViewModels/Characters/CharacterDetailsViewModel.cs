@@ -12,5 +12,5 @@ public class CharacterDetailsViewModel
     public string PortraitUrl { get; set; } = default!;
     public int Power { get; set; }
 
-    public ICollection<BattleDetailsViewModel> Battles { get; set; } = default!;
+    public IList<BattleDetailsViewModel> Battles { get; set; } = default!;
 }
