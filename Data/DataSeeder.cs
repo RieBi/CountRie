@@ -252,7 +252,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 Description = "A brave warrior from the United States.",
                 BirthDate = new DateOnly(1990, 1, 1),
                 OriginCountry = countries.Single(c => c.Name == "United States"),
-                PortraitUrl = "",
+                PortraitUrl = "https://cdn.britannica.com/81/82281-050-3ADDC3DB/John-Smith-engraving.jpg",
                 Power = 1
             },
             new()
@@ -262,7 +262,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 Description = "A theoretical physicist who developed the theory of relativity.",
                 BirthDate = new DateOnly(1879, 3, 14),
                 OriginCountry = countries.Single(c => c.Name == "Germany"),
-                PortraitUrl = "",
+                PortraitUrl = "https://hips.hearstapps.com/hmg-prod/images/albert-einstein-sticks-out-his-tongue-when-asked-by-news-photo-1681316749.jpg",
                 Power = 1
             },
             new()
@@ -272,7 +272,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 Description = "A Renaissance polymath known for his art, inventions, and scientific studies.",
                 BirthDate = new DateOnly(1452, 4, 15),
                 OriginCountry = countries.Single(c => c.Name == "Nigeria"),
-                PortraitUrl = "",
+                PortraitUrl = "https://hips.hearstapps.com/hmg-prod/images/portrait-of-leonardo-da-vinci-1452-1519-getty.jpg",
                 Power = 1
             },
             new()
@@ -282,7 +282,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 Description = "A physicist and chemist who conducted pioneering research on radioactivity.",
                 BirthDate = new DateOnly(1867, 11, 7),
                 OriginCountry = countries.Single(c => c.Name == "Australia"),
-                PortraitUrl = "",
+                PortraitUrl = "https://cdn.britannica.com/10/74610-050-19CB330C/Marie-Curie-Paris-laboratory.jpg",
                 Power = 1
             },
             new()
@@ -292,7 +292,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 Description = "A fearless leader from Brazil.",
                 BirthDate = new DateOnly(1995, 7, 22),
                 OriginCountry = countries.Single(c => c.Name == "Brazil"),
-                PortraitUrl = "",
+                PortraitUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_MS7u-kTqQIglGPYFogZ40OOopZ29GarMEg&s",
                 Power = 1
             },
             new()
@@ -302,7 +302,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 Description = "A legendary hitman from the United States.",
                 BirthDate = new DateOnly(1964, 9, 19),
                 OriginCountry = countries.Single(c => c.Name == "United States"),
-                PortraitUrl = "",
+                PortraitUrl = "https://hips.hearstapps.com/hmg-prod/images/mh-9-22-wick-650dcf0aeb656.jpg?crop=0.447xw:0.895xh;0,0&resize=640:*",
                 Power = 1
             },
             new()
@@ -312,7 +312,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 Description = "A legendary warrior from Japan.",
                 BirthDate = new DateOnly(1991, 2, 28),
                 OriginCountry = countries.Single(c => c.Name == "Japan"),
-                PortraitUrl = "",
+                PortraitUrl = "https://images.mubicdn.net/images/cast_member/216055/cache-305448-1517045174/image-w856.jpg?size=800x",
                 Power = 1
             },
             new()
@@ -322,7 +322,7 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 Description = "A leader of the Indian independence movement and advocate of nonviolent resistance.",
                 BirthDate = new DateOnly(1869, 10, 2),
                 OriginCountry = countries.Single(c => c.Name == "India"),
-                PortraitUrl = "",
+                PortraitUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_F_nLbFmr5xy_YL8Q7CLRr3x381EkYneqsg&s",
                 Power = 1
             }
         };
