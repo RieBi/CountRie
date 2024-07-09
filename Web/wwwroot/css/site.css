@@ -71,10 +71,18 @@ body {
     outline: 5px solid red;
 }
 
+.bbug {
+    border: 5px solid green;
+}
+
 .country-info {
     overflow: hidden;
 }
 
 .fs-5-5 {
     font-size: 1.1em;
+}
+
+.sizy {
+    width: 600px;
 }
