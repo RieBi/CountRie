@@ -7,7 +7,6 @@ public class GetCharacterDetailsQueryHandler(DataContext context, IMapper mapper
     private readonly DataContext _context = context;
     private readonly IMapper _mapper = mapper;
 
-
     public async Task<CharacterDetailsDto?> Handle(GetCharacterDetailsQuery request, CancellationToken cancellationToken)
     {
         var character = await _context.Characters
