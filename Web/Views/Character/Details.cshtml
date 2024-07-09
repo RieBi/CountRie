@@ -56,24 +56,17 @@
                 }
                 @foreach (var battle in Model.Battles)
                 {
-                    <div id="b-@battle.Id" class="col-4">
-                        <div class="m-4">
+                    <div id="b-@battle.Id" class="col-lg-6">
+                        <div class="p-3 m-3 rounded-3 bg-light">
                             <h3>@battle.Name</h3>
                             <p>@battle.Date.ToLongDateString()</p>
-                            <p>@battle.WinnerCharacter.Name VS @battle.LoserCharacter.Name</p>
+                            <p>
+                                <span class="text-success">@battle.WinnerCharacter.Name</span>
+                                VS
+                                <span class="text-danger">@battle.LoserCharacter.Name</span>
+                            </p>
                             <p>@battle.Country.Name</p>
                         </div>
-                        <!--
-                        <div class="card mb-3">
-                            <div class="card-header">
-                                <h4 class="card-title">@battle.Name</h4>
-                            </div>
-                            <img src="https://placehold.co/600x600" class="" />
-                            <div class="card-body">
-                                <p class="card-text">Your ad could be here</p>
-                            </div>
-                        </div>
-                        -->
                     </div>
                 }
             </div>
