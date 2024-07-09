@@ -48,7 +48,7 @@
     <hr />
     <div class="row">
         <div class="col">
-            <h2 class="mb-3">Battles</h2>
+            <h2 class="mb-2 ms-3">Battles</h2>
             <div class="row">
                 @if (Model.Battles.Count == 0)
                 {
@@ -57,15 +57,21 @@
                 @foreach (var battle in Model.Battles)
                 {
                     <div id="b-@battle.Id" class="col-lg-6">
-                        <div class="p-3 m-3 rounded-3 bg-light">
+                        <div class="p-3 my-3 rounded-3 bg-light fs-5-5">
                             <h3>@battle.Name</h3>
-                            <p>@battle.Date.ToLongDateString()</p>
-                            <p>
-                                <span class="text-success">@battle.WinnerCharacter.Name</span>
-                                VS
-                                <span class="text-danger">@battle.LoserCharacter.Name</span>
+                            <p class="row">
+                                <span class="col-6">@battle.Date.ToLongDateString()</span>
+                                <span class="col-6 text-end">@battle.Country.Name</span>
                             </p>
-                            <p>@battle.Country.Name</p>
+                            <p class="row">
+                                <span class="col-4 text-start text-success
+                                            @(battle.WinnerCharacter.Id == Model.Id ? "fw-bold" : "")
+                                            ">@battle.WinnerCharacter.Name</span>
+                                <span class="col-4 text-center text-violet">VS</span>
+                                <span class="col-4 text-end text-danger
+                                            @(battle.LoserCharacter.Id == Model.Id ? "fw-bold" : "")
+                                            ">@battle.LoserCharacter.Name</span>
+                            </p>
                         </div>
                     </div>
                 }
