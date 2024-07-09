@@ -1,5 +1,39 @@
-﻿@{
+﻿@using Web.ViewModels.Battles
+@model IList<BattleDetailsViewModel>
+@{
     ViewData["Title"] = "Battles";
 }
 
-To be implemented
+<div class="container mt-1">
+    <div class="row">
+        @foreach (var battle in Model)
+        {
+            <div id="b-@battle.Id" class="col-6">    
+                <div class="p-3 my-3 rounded-3 bg-light fs-5-5">
+                    <h3>@battle.Name</h3>
+                    <div class="row pb-0">
+                        <div class="col-6">
+                            <p class="">@battle.Date.ToLongDateString()</p>
+                            <span class="text-success fst-italic">Winner</span>
+                        </div>
+                        <div class="col-6 text-end">
+                            <p><a asp-controller="Country" asp-action="@battle.Country.Name" class="text-reset">@battle.Country.Name</a></p>
+                            <span class="text-danger fst-italic">Loser</span>
+                        </div>
+                    </div>
+                    <p class="row">
+                        <span class="col-4">
+                            <a asp-controller="Character" asp-action="@battle.WinnerCharacter.Name" class="text-start text-success">@battle.WinnerCharacter.Name</a>
+                        </span>
+                        <span class="col-4 text-center">
+                            <span class="text-violet">VS</span>
+                        </span>
+                        <span class="col-4 text-end">
+                            <a asp-controller="Character" asp-action="@battle.LoserCharacter.Name" class="text-danger">@battle.LoserCharacter.Name</a>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
