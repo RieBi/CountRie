@@ -65,28 +65,34 @@
                                     <span class="text-success fst-italic">Winner</span>
                                 </div>
                                 <div class="col-6 text-end">
-                                    <p class="">@battle.Country.Name</p>
+                                    <p><a asp-controller="Country" asp-action="@battle.Country.Name" class="text-reset">@battle.Country.Name</a></p>
                                     <span class="text-danger fst-italic">Loser</span>
                                 </div>
                             </div>
                             <p class="row">
-                                <span class="col-4 text-start text-success
+                                <span class="col-4">
+                                <a asp-action="@battle.WinnerCharacter.Name" class="text-start text-success
                                             @(battle.WinnerCharacter.Id == Model.Id ? "fw-bold" : "")
-                                            ">@battle.WinnerCharacter.Name</span>
-                                <span class="col-4 text-center text-violet">VS</span>
-                                <span class="col-4 text-end text-danger
+                                            ">@battle.WinnerCharacter.Name</a>
+                                </span>
+                                <span class="col-4 text-center">
+                                <span class="text-violet">VS</span>
+                                </span>
+                                <span class="col-4 text-end">
+                                <a asp-action="@battle.LoserCharacter.Name" class="text-danger
                                             @(battle.LoserCharacter.Id == Model.Id ? "fw-bold" : "")
-                                            ">@battle.LoserCharacter.Name</span>
+                                            ">@battle.LoserCharacter.Name</a>
+                                </span>
                             </p>
                         </div>
                     </div>
                 }
             </div>
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-lg-6">
                     <form asp-controller="Battle" asp-action="CreateRandomBattle" asp-route-characterId="@Model.Id">
-                        <button type="submit" class="btn btn-info">
-                            Create a battle
+                        <button type="submit" class="btn btn-info w-100">
+                            Create a random battle
                         </button>
                     </form>
                 </div>
