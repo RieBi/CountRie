@@ -1,5 +1,6 @@
 ﻿using Application.Commands.BattleCommands;
 using Application.Queries.BattleQueries;
+using Application.Queries.CharacterQueries;
 using AutoMapper;
 using Data.Models;
 using MediatR;
@@ -24,10 +25,29 @@ public class BattleController(IMediator mediator, IMapper mapper) : Controller
     public async Task<IActionResult> CreateRandomBattle(int characterId)
     {
         if (!ModelState.IsValid)
-            return NotFound();
+            return BadRequest();
 
         var newBattleId = await _mediator.Send(new CreateRandomBattleCommand(characterId));
 
         return Redirect(Request.Headers.Referer.ToString() + $"#b-{newBattleId}");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateSpecificBattle(int characterId, [FromForm] string opponentName)
+    {
+        if (string.IsNullOrWhiteSpace(opponentName))
+            return RedirectToActionPreserveMethod(nameof(CreateRandomBattle), routeValues: new { characterId });
+
+        if (!ModelState.IsValid)
+            return BadRequest();
+
+        var opponentId = await _mediator.Send(new GetCharacterIdByName(opponentName));
+        if (opponentId is null)
+            return BadRequest();
+
+        var newBattleId = await _mediator.Send(new CreateSpecificBattleCommand(characterId, opponentId.Value));
+
+        return Redirect(Request.Headers.Referer.ToString() + $"#b-{newBattleId}");
+
     }
 }

@@ -90,9 +90,11 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <form asp-controller="Battle" asp-action="CreateRandomBattle" asp-route-characterId="@Model.Id">
+                    <form asp-controller="Battle" asp-action="CreateSpecificBattle" asp-route-characterId="@Model.Id">
+                        <label class="form-label" for="opponentName">Select an opponent character (leave blank for a random opponent):</label>
+                        <input id="opponentName" name="opponentName" class="form-control" list="characterList" placeholder="Character name"/>
                         <button type="submit" class="btn btn-info w-100">
-                            Create a random battle
+                            Create battle
                         </button>
                     </form>
                 </div>
