@@ -28,9 +28,11 @@ public class CharacterController(IMediator mediator, IMapper mapper) : Controlle
 
         var characterBattles = await _mediator.Send(new GetCharacterBattlesQuery(character.Id));
         var characterViewModelBattles = _mapper.Map<IList<BattleDetailsViewModel>>(characterBattles);
+        var characterNames = await _mediator.Send(new GetAllCharacterNamesQuery());
 
         var characterViewModel = _mapper.Map<CharacterDetailsViewModel>(character);
         characterViewModel.Battles = characterViewModelBattles;
+        characterViewModel.AvailableCharactersNames = characterNames;
 
         return View(characterViewModel);
     }

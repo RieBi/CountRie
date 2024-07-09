@@ -92,7 +92,18 @@
                 <div class="col-lg-6">
                     <form asp-controller="Battle" asp-action="CreateSpecificBattle" asp-route-characterId="@Model.Id">
                         <label class="form-label" for="opponentName">Select an opponent character (leave blank for a random opponent):</label>
-                        <input id="opponentName" name="opponentName" class="form-control" list="characterList" placeholder="Character name"/>
+                        <input id="opponentName" name="opponentName" class="form-control" list="characterNames" placeholder="Character name" autocomplete="off" />
+
+                        <datalist id="characterNames">
+                            @foreach (var name in Model.AvailableCharactersNames)
+                            {
+                                if (name != Model.Name)
+                                {
+                                    <option value="@name"></option>
+                                }
+                            }
+                        </datalist>
+
                         <button type="submit" class="btn btn-info w-100">
                             Create battle
                         </button>
