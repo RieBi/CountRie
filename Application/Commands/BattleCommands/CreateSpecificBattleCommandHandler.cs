@@ -8,6 +8,9 @@ public class CreateSpecificBattleCommandHandler(IBattleService battleService) : 
 
     public async Task<int> Handle(CreateSpecificBattleCommand request, CancellationToken cancellationToken)
     {
+        if (request.CharacterAId == request.CharacterBId)
+            return -1;
+
         var battle = await _battleService.ExecuteBattleAsync(request.CharacterAId, request.CharacterBId);
 
         return battle.Id;
