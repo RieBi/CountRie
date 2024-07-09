@@ -13,4 +13,5 @@ public class CharacterDetailsViewModel
     public int Power { get; set; }
 
     public IList<BattleDetailsViewModel> Battles { get; set; } = default!;
+    public IList<ShortInfoViewModel> AvailableCharacters { get; set; } = default!;
 }
