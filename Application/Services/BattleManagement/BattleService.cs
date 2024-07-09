@@ -7,8 +7,16 @@ public class BattleService(DataContext context) : IBattleService
 {
     private readonly DataContext _context = context;
 
-    public async Task<Battle> ExecuteBattleAsync(Character characterA, Character characterB)
+    public async Task<Battle> ExecuteBattleAsync(int characterAId, int characterBId)
     {
+        var characterA = await _context.Characters
+            .Include(f => f.OriginCountry)
+            .SingleAsync(f => f.Id == characterAId);
+
+        var characterB = await _context.Characters
+            .Include(f => f.OriginCountry)
+            .SingleAsync(f => f.Id == characterBId);
+
         var totalPower = characterA.Power + characterB.Power;
         var dice = Random.Shared.Next(1, totalPower + 1);
 
@@ -35,17 +43,16 @@ public class BattleService(DataContext context) : IBattleService
         return info.Entity;
     }
 
-    public async Task<Battle> ExecuteBattleAsync(Character character)
+    public async Task<Battle> ExecuteBattleAsync(int characterId)
     {
-        var characterB = GetRandomOpponent(character);
-        return await ExecuteBattleAsync(character, characterB);
+        var characterB = GetRandomOpponent(characterId);
+        return await ExecuteBattleAsync(characterId, characterB.Id);
     }
 
-    public Character GetRandomOpponent(Character excludedCharacter)
+    public Character GetRandomOpponent(int excludedCharacterId)
     {
         var randomCharacter = _context.Characters
-            .Include(f => f.OriginCountry)
-            .Where(f => f.Id != excludedCharacter.Id)
+            .Where(f => f.Id != excludedCharacterId)
             .OrderBy(f => Guid.NewGuid())
             .First();
 

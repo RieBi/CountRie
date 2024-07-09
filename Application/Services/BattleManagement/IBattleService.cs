@@ -3,7 +3,7 @@
 namespace Application.Services.BattleManagement;
 public interface IBattleService
 {
-    Task<Battle> ExecuteBattleAsync(Character character);
-    Task<Battle> ExecuteBattleAsync(Character characterA, Character characterB);
-    Character GetRandomOpponent(Character excludedCharacter);
+    Task<Battle> ExecuteBattleAsync(int characterId);
+    Task<Battle> ExecuteBattleAsync(int characterAId, int characterBId);
+    Character GetRandomOpponent(int excludedCharacterId);
 }
