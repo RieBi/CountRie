@@ -59,10 +59,16 @@
                     <div id="b-@battle.Id" class="col-lg-6">
                         <div class="p-3 my-3 rounded-3 bg-light fs-5-5">
                             <h3>@battle.Name</h3>
-                            <p class="row">
-                                <span class="col-6">@battle.Date.ToLongDateString()</span>
-                                <span class="col-6 text-end">@battle.Country.Name</span>
-                            </p>
+                            <div class="row pb-0">
+                                <div class="col-6">
+                                    <p class="">@battle.Date.ToLongDateString()</p>
+                                    <span class="text-success fst-italic">Winner</span>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p class="">@battle.Country.Name</p>
+                                    <span class="text-danger fst-italic">Loser</span>
+                                </div>
+                            </div>
                             <p class="row">
                                 <span class="col-4 text-start text-success
                                             @(battle.WinnerCharacter.Id == Model.Id ? "fw-bold" : "")
