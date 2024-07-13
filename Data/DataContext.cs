@@ -1,8 +1,10 @@
 ﻿using Data.ModelConfigurations;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data;
-public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
+public class DataContext(DbContextOptions<DataContext> options) : IdentityDbContext<IdentityUser>(options)
 {
     public DbSet<Battle> Battles { get; set; }
     public DbSet<Character> Characters { get; set; }
@@ -13,16 +15,16 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
     public DbSet<Religion> Religions { get; set; }
     public DbSet<Specialty> Specialties { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder builder)
     {
-        base.OnModelCreating(modelBuilder);
+        base.OnModelCreating(builder);
 
-        modelBuilder.ApplyConfiguration(new BattleConfiguration());
-        modelBuilder.ApplyConfiguration(new CharacterConfiguration());
-        modelBuilder.ApplyConfiguration(new CountryConfiguration());
-        modelBuilder.ApplyConfiguration(new GovernanceTypeConfiguration());
-        modelBuilder.ApplyConfiguration(new LanguageConfiguration());
-        modelBuilder.ApplyConfiguration(new ReligionConfiguration());
-        modelBuilder.ApplyConfiguration(new SpecialtyConfiguration());
+        builder.ApplyConfiguration(new BattleConfiguration());
+        builder.ApplyConfiguration(new CharacterConfiguration());
+        builder.ApplyConfiguration(new CountryConfiguration());
+        builder.ApplyConfiguration(new GovernanceTypeConfiguration());
+        builder.ApplyConfiguration(new LanguageConfiguration());
+        builder.ApplyConfiguration(new ReligionConfiguration());
+        builder.ApplyConfiguration(new SpecialtyConfiguration());
     }
 }
