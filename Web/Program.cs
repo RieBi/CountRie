@@ -1,11 +1,29 @@
 using Application;
 using Application.Services.BattleManagement;
 using Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAuthorization();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    options.Password = new()
+    {
+        RequireDigit = false,
+        RequiredLength = 10,
+        RequireLowercase = false,
+        RequireNonAlphanumeric = false,
+        RequireUppercase = false,
+    };
+})
+    .AddEntityFrameworkStores<DataContext>();
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DataContext>(options =>
@@ -20,6 +38,8 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(ty
 
 builder.Services.AddScoped<IDataSeeder, DataSeeder>();
 builder.Services.AddScoped<IBattleService, BattleService>();
+
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -36,11 +56,14 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 using (var scope = app.Services.CreateScope())
 {
