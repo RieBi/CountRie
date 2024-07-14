@@ -20,6 +20,7 @@ internal class CharacterConfiguration : IEntityTypeConfiguration<Character>
 
         builder.Property(f => f.Name).HasMaxLength(DataConfig.NameLength);
         builder.Property(f => f.Description).HasMaxLength(DataConfig.DescriptionLength);
+        builder.Property(f => f.LongDescription).HasMaxLength(DataConfig.LongDescriptionLength);
         builder.Property(f => f.PortraitUrl).HasMaxLength(DataConfig.UrlLength);
     }
 }
