@@ -4,6 +4,7 @@ public class Country
     public int Id { get; set; }
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;
+    public string LongDescription { get; set; } = default!;
     public string Capital { get; set; } = default!;
     public long Population { get; set; }
     public long Area { get; set; }
