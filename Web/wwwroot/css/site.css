@@ -86,3 +86,7 @@ body {
 .sizy {
     width: 600px;
 }
+
+.long-text {
+    white-space: pre-line;
+}
