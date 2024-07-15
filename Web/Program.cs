@@ -22,6 +22,18 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 })
     .AddEntityFrameworkStores<DataContext>();
 
+builder.Services.AddAuthentication()
+    .AddGoogle(options =>
+    {
+        var googleConfigSection = builder.Configuration.GetSection("Authentication:Google");
+        var (clientId, clientSecret) = (googleConfigSection["ClientId"], googleConfigSection["ClientSecret"]);
+        if (clientId is null || clientSecret is null)
+            return;
+
+        options.ClientId = clientId;
+        options.ClientSecret = clientSecret;
+    });
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DataContext>(options =>
