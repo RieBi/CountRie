@@ -33,15 +33,15 @@ public class BattleController(IMediator mediator, IMapper mapper) : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateSpecificBattle(int characterId, [FromForm] string opponentName)
+    public async Task<IActionResult> CreateSpecificBattle(int characterId, [FromForm] string? opponentName)
     {
+        if (!ModelState.IsValid)
+            return BadRequest();
+
         if (string.IsNullOrWhiteSpace(opponentName))
             return RedirectToActionPreserveMethod(nameof(CreateRandomBattle), routeValues: new { characterId });
 
         var ret = Request.Headers.Referer.ToString() + "#opponentName";
-
-        if (!ModelState.IsValid)
-            return BadRequest();
 
         var opponentId = await _mediator.Send(new GetCharacterIdByName(opponentName));
         if (opponentId is null)
