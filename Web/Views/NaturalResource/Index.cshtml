@@ -6,6 +6,34 @@
 }
 
 <div class="container mt-1">
+    <div class="modal fade" id="createModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Create new natural resource?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post" id="createForm">
+                    <div class="modal-body fw-bold">
+                        <label for="createName" class="form-label">Name</label>
+                        <input type="text" id="createName" name="Name" minlength="1" maxlength="@DataConfig.NameLength" class="form-control" autocomplete="off">
+
+                        <label for="createDescription" class="form-label">Description</label>
+                        <input type="text" id="editDescription" name="Description" minlength="1" maxlength="@DataConfig.DescriptionLength" class="form-control" autocomplete="off">
+
+                        <input type="hidden" id="createId" name="Id" value="1"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button asp-action="Create" type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Create new natural resource</button>
+
     <div class="modal fade" id="deleteModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
