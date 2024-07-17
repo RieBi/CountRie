@@ -1,7 +1,10 @@
-﻿using Application.Queries.NaturalResourceQueries;
+﻿using Application.Commands.NaturalResourceCommands;
+using Application.Queries.NaturalResourceQueries;
 using AutoMapper;
+using Data.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Web.ViewModels;
 
 namespace Web.Controllers;
 public class NaturalResourceController(IMediator mediator, IMapper mapper) : Controller
@@ -14,5 +17,17 @@ public class NaturalResourceController(IMediator mediator, IMapper mapper) : Con
         var resources = await _mediator.Send(new GetNaturalResourceListQuery());
 
         return View(resources);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit([FromForm] ShortInfoViewModel resource)
+    {
+        if (!ModelState.IsValid)
+            return this.RedirectBack();
+
+        var resourceModel = _mapper.Map<NaturalResource>(resource);
+        await _mediator.Send(new EditNaturalResourceCommand(resourceModel));
+
+        return this.RedirectBack();
     }
 }

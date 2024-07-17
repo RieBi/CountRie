@@ -17,5 +17,7 @@ public class MappingProfiles : Profile
 
         CreateMap<Battle, BattleDetailsViewModel>();
         CreateMap<CharacterDetailsDto, CharacterDetailsViewModel>();
+
+        CreateMap<ShortInfoViewModel, NaturalResource>();
     }
 }

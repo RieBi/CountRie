@@ -18,7 +18,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <form method="delete" id="deleteForm">
+                    <form method="post" id="deleteForm">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </div>
@@ -33,13 +33,15 @@
                     <h1 class="modal-title fs-5">Edit <span id="editNameTitle"></span>?</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="put" id="editForm">
+                <form method="post" id="editForm">
                     <div class="modal-body fw-bold">
                         <label for="editName" class="form-label">Name</label>
                         <input type="text" id="editName" name="Name" minlength="1" maxlength="@DataConfig.NameLength" class="form-control" autocomplete="off">
 
                         <label for="editDescription" class="form-label">Description</label>
                         <input type="text" id="editDescription" name="Description" minlength="1" maxlength="@DataConfig.DescriptionLength" class="form-control" autocomplete="off">
+
+                        <input type="hidden" id="editId" name="Id" />
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -85,6 +87,7 @@
         document.getElementById('editNameTitle').textContent = name;
         document.getElementById('editName').value = name;
         document.getElementById('editDescription').value = description;
-        document.getElementById('editForm').action = '/NaturalResource/Edit/' + id;
+        document.getElementById('editId').value = id;
+        document.getElementById('editForm').action = '/NaturalResource/Edit/';
     }
 </script>
