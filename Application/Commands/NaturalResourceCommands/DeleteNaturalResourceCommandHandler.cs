@@ -3,15 +3,16 @@ public class DeleteNaturalResourceCommandHandler(DataContext context) : IRequest
 {
     private readonly DataContext _context = context;
 
-    public Task<Unit> Handle(DeleteNaturalResourceCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteNaturalResourceCommand request, CancellationToken cancellationToken)
     {
-        var resource = _context.NaturalResources.Find(request.Id);
+        var resource = await _context.NaturalResources.FindAsync([request.Id], cancellationToken: cancellationToken);
 
         if (resource is null)
-            return Unit.Task;
+            return Unit.Value;
 
         _context.NaturalResources.Remove(resource);
+        await _context.SaveChangesAsync(cancellationToken);
 
-        return Unit.Task;
+        return Unit.Value;
     }
 }
