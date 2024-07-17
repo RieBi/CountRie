@@ -5,6 +5,26 @@
 }
 
 <div class="container mt-1">
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Delete <span id="resourceName1"></span>?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-danger fw-bold">
+                    Are you sure you want to delete <span id="resourceName2"></span> forever? This action is permanent. There's no going back.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <form method="delete" id="deleteForm">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @foreach (var resource in Model)
     {
         <div class="row">
@@ -17,10 +37,18 @@
                         <a asp-action="Edit" asp-route-id="@resource.Id" class="material-symbols-outlined float-end text-decoration-none">brush</a>
                     </div>
                     <div class="col-1">
-                        <a asp-action="Delete" asp-route-id="@resource.Id" class="material-symbols-outlined float-end text-decoration-none">delete_forever</a>
+                        <button type="button" onclick="showDeleteModal('@resource.Id', '@resource.Name')" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-link p-0 material-symbols-outlined float-end text-decoration-none">delete_forever</button>
                     </div>
                 </div>
             </div>
         </div>
     }
 </div>
+
+<script>
+    function showDeleteModal(id, name) {
+        document.getElementById('resourceName1').textContent = name;
+        document.getElementById('resourceName2').textContent = name;
+        document.getElementById('deleteForm').action = '/YourController/Delete/' + id;
+    }
+</script>
