@@ -22,17 +22,18 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 })
     .AddEntityFrameworkStores<DataContext>();
 
-builder.Services.AddAuthentication()
-    .AddGoogle(options =>
-    {
-        var googleConfigSection = builder.Configuration.GetSection("Authentication:Google");
-        var (clientId, clientSecret) = (googleConfigSection["ClientId"], googleConfigSection["ClientSecret"]);
-        if (clientId is null || clientSecret is null)
-            return;
+var authBuilder = builder.Services.AddAuthentication();
+var googleConfigSection = builder.Configuration.GetSection("Authentication:Google");
+var (googleClientId, googleClientSecret) = (googleConfigSection["ClientId"], googleConfigSection["ClientSecret"]);
 
-        options.ClientId = clientId;
-        options.ClientSecret = clientSecret;
+if (googleClientId is not null && googleClientSecret is not null)
+{
+    authBuilder.AddGoogle(options =>
+    {
+        options.ClientId = googleClientId;
+        options.ClientSecret = googleClientSecret;
     });
+}
 
 builder.Services.AddControllersWithViews();
 
