@@ -17,5 +17,8 @@ internal class BattleConfiguration : IEntityTypeConfiguration<Battle>
             .WithMany(f => f.LostBattles);
 
         builder.Property(f => f.Name).HasMaxLength(DataConfig.NameLength);
+
+        builder.Property(f => f.Id)
+            .UseIdentityAlwaysColumn();
     }
 }

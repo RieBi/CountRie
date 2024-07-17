@@ -10,5 +10,8 @@ internal class GovernanceTypeConfiguration : IEntityTypeConfiguration<Governance
         builder.Property(f => f.Description).HasMaxLength(DataConfig.DescriptionLength);
 
         builder.HasIndex(f => f.Name).IsUnique();
+
+        builder.Property(f => f.Id)
+            .UseIdentityAlwaysColumn();
     }
 }

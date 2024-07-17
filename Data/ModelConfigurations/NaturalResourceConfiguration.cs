@@ -14,5 +14,8 @@ internal class NaturalResourceConfiguration : IEntityTypeConfiguration<NaturalRe
         builder.Property(f => f.Description).HasMaxLength(DataConfig.DescriptionLength);
 
         builder.HasIndex(f => f.Name).IsUnique();
+
+        builder.Property(f => f.Id)
+            .UseIdentityAlwaysColumn();
     }
 }
