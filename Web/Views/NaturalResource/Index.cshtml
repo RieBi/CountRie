@@ -1,4 +1,5 @@
-﻿@using Data.Models
+﻿@using Data
+@using Data.Models
 @model IList<NaturalResource>
 @{
     ViewData["Title"] = "Natural Resources";
@@ -25,6 +26,30 @@
         </div>
     </div>
 
+    <div class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Edit <span id="editNameTitle"></span>?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="put" id="editForm">
+                    <div class="modal-body fw-bold">
+                        <label for="editName" class="form-label">Name</label>
+                        <input type="text" id="editName" name="Name" minlength="1" maxlength="@DataConfig.NameLength" class="form-control">
+
+                        <label for="editDescription" class="form-label">Description</label>
+                        <input type="text" id="editDescription" name="Description" minlength="1" maxlength="@DataConfig.DescriptionLength" class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     @foreach (var resource in Model)
     {
         <div class="row">
@@ -34,10 +59,14 @@
                         <span class="badge custom-badge">@resource.Name</span> - @resource.Description
                     </div>
                     <div class="col-1">
-                        <a asp-action="Edit" asp-route-id="@resource.Id" class="material-symbols-outlined float-end text-decoration-none">brush</a>
+                        <button type="button" onclick="showEditModal('@resource.Id', '@resource.Name', '@resource.Description')"
+                                data-bs-toggle="modal" data-bs-target="#editModal"
+                                class="btn btn-link material-symbols-outlined float-end text-decoration-none">brush</button>
                     </div>
                     <div class="col-1">
-                        <button type="button" onclick="showDeleteModal('@resource.Id', '@resource.Name')" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-link p-0 material-symbols-outlined float-end text-decoration-none">delete_forever</button>
+                        <button type="button" onclick="showDeleteModal('@resource.Id', '@resource.Name')"
+                                data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                class="btn btn-link p-0 material-symbols-outlined float-end text-decoration-none">delete_forever</button>
                     </div>
                 </div>
             </div>
@@ -49,6 +78,13 @@
     function showDeleteModal(id, name) {
         document.getElementById('resourceName1').textContent = name;
         document.getElementById('resourceName2').textContent = name;
-        document.getElementById('deleteForm').action = '/YourController/Delete/' + id;
+        document.getElementById('deleteForm').action = '/NaturalResource/Delete/' + id;
+    }
+
+    function showEditModal(id, name, description) {
+        document.getElementById('editNameTitle').textContent = name;
+        document.getElementById('editName').value = name;
+        document.getElementById('editDescription').value = description;
+        document.getElementById('editForm').action = '/NaturalResource/Edit/' + id;
     }
 </script>
