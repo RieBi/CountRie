@@ -20,6 +20,18 @@ public class NaturalResourceController(IMediator mediator, IMapper mapper) : Con
     }
 
     [HttpPost]
+    public async Task<IActionResult> Create([FromForm] ShortInfoViewModel resource)
+    {
+        if (!ModelState.IsValid)
+            return this.RedirectBack();
+
+        var resourceModel = _mapper.Map<NaturalResource>(resource);
+        await _mediator.Send(new CreateNaturalResourceCommand(resourceModel));
+
+        return this.RedirectBack();
+    }
+
+    [HttpPost]
     public async Task<IActionResult> Edit([FromForm] ShortInfoViewModel resource)
     {
         if (!ModelState.IsValid)
