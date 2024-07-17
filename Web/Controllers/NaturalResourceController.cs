@@ -30,4 +30,15 @@ public class NaturalResourceController(IMediator mediator, IMapper mapper) : Con
 
         return this.RedirectBack();
     }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(int id)
+    {
+        if (!ModelState.IsValid)
+            return this.RedirectBack();
+
+        await _mediator.Send(new DeleteNaturalResourceCommand(id));
+
+        return this.RedirectBack();
+    }
 }
