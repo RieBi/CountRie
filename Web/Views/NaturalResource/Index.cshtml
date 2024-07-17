@@ -10,11 +10,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5">Delete <span id="resourceName1"></span>?</h1>
+                    <h1 class="modal-title fs-5">Delete <span id="deleteNameTitle"></span>?</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-danger fw-bold">
-                    Are you sure you want to delete <span id="resourceName2"></span> forever? This action is permanent. There's no going back.
+                    Are you sure you want to delete <span id="deleteName"></span> forever? This action is permanent. There's no going back.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -78,8 +78,8 @@
 
 <script>
     function showDeleteModal(id, name) {
-        document.getElementById('resourceName1').textContent = name;
-        document.getElementById('resourceName2').textContent = name;
+        document.getElementById('deleteNameTitle').textContent = name;
+        document.getElementById('deleteName').textContent = name;
         document.getElementById('deleteForm').action = '/NaturalResource/Delete/' + id;
     }
 
