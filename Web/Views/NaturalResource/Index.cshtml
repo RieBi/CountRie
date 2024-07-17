@@ -8,11 +8,19 @@
     @foreach (var resource in Model)
     {
         <div class="row">
-            <p>
-                <span class="badge text-bg-light border fw-medium fs-6">
-                    <span class="badge custom-badge">@resource.Name</span> - @resource.Description
-                </span>
-            </p>
+            <div class="text-bg-light border rounded fw-medium fs-6 my-2 p-2 col">
+                <div class="row">
+                    <div class="col-10">
+                        <span class="badge custom-badge">@resource.Name</span> - @resource.Description
+                    </div>
+                    <div class="col-1">
+                        <a asp-action="Edit" asp-route-id="@resource.Id" class="material-symbols-outlined float-end text-decoration-none">brush</a>
+                    </div>
+                    <div class="col-1">
+                        <a asp-action="Delete" asp-route-id="@resource.Id" class="material-symbols-outlined float-end text-decoration-none">delete_forever</a>
+                    </div>
+                </div>
+            </div>
         </div>
     }
 </div>
