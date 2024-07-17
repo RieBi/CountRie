@@ -32,6 +32,20 @@ if (googleClientId is not null && googleClientSecret is not null)
     {
         options.ClientId = googleClientId;
         options.ClientSecret = googleClientSecret;
+        options.AccessDeniedPath = "/";
+    });
+}
+
+var facebookConfigSection = builder.Configuration.GetSection("Authentication:Facebook");
+var (facebookClientId, facebookClientSecret) = (facebookConfigSection["ClientId"], facebookConfigSection["ClientSecret"]);
+
+if (facebookClientId is not null && facebookClientSecret is not null)
+{
+    authBuilder.AddFacebook(options =>
+    {
+        options.ClientId = facebookClientId;
+        options.ClientSecret = facebookClientSecret;
+        options.AccessDeniedPath = "/";
     });
 }
 
