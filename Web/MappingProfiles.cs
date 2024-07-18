@@ -19,5 +19,6 @@ public class MappingProfiles : Profile
         CreateMap<CharacterDetailsDto, CharacterDetailsViewModel>();
 
         CreateMap<ShortInfoViewModel, NaturalResource>();
+        CreateMap<ShortInfoViewModel, Specialty>();
     }
 }
