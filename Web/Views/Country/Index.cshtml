@@ -5,9 +5,16 @@
     ViewData["Title"] = "Countries";
 }
 
+<div class="row">
+    <a href="#" class="btn btn-primary">
+        <span class="material-symbols-outlined">contract_edit</span>
+        Create new country
+    </a>
+</div>
+
 @foreach (var c in Model)
 {
-    <div class="container mt-5">
+    <div class="container mt-3 mb-5">
         <div class="p-5 bg-light rounded-3">
             <div class="row p-5 bg-light rounded-3">
                 <div class="col-md-4">

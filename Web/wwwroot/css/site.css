@@ -68,11 +68,11 @@ body {
 }
 
 .bug {
-    outline: 5px solid red;
+    outline: 2px solid red;
 }
 
 .bbug {
-    border: 5px solid green;
+    border: 2px solid green;
 }
 
 .country-info {
