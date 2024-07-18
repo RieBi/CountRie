@@ -1,0 +1,55 @@
+﻿@using Application.Queries.CountryQueries
+@model CountryDetailsDto
+@{
+}
+
+<h2>Create Country</h2>
+<form asp-action="Create" method="post">
+    <div class="row border rounded p-3 m-2">
+        <div>
+            <label asp-for="Name" for="countryName" class="form-label">Country Name:</label>
+            <input id="countryName" asp-for="Name" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row border rounded p-3 m-2">
+        <label class="form-label h4">Specialties</label>
+        <div id="specialties-container">
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="button" onclick="addSpecialty()" class="btn btn-primary mt-2">Add Specialty</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row p-3 m-2">
+        <div class="col">
+            <button type="submit" class="btn btn-primary my-3">Create Country</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    let specialtyCount = 0;
+    function addSpecialty() {
+        const specialtyHtml = `
+            <div id="specialty-${specialtyCount}" class="input-group my-1">
+                    <select class="form-select" name="Specialties">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <button type="button" onclick="removeSpecialty(${specialtyCount})" class="btn btn-primary">Remove</button>
+            </div>
+        `;
+
+        document.getElementById('specialties-container').innerHTML += specialtyHtml;               
+    }
+
+    function removeSpecialty(id) {
+        let element = document.querySelector(`#specialty-${id}`);
+        element.remove();
+    }
+</script>

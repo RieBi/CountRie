@@ -15,7 +15,7 @@ public class CountryController(IMediator mediator) : Controller
         return View(countries);
     }
 
-    [HttpGet("[controller]/{name}")]
+    [HttpGet("[Controller]/[Action]/{name}")]
     public async Task<IActionResult> Details(string name)
     {
         var country = await _mediator.Send(new GetCountryDetailsQuery(name));
@@ -23,5 +23,10 @@ public class CountryController(IMediator mediator) : Controller
             return NotFound();
 
         return View(country);
+    }
+
+    public IActionResult Create()
+    {
+        return View();
     }
 }
