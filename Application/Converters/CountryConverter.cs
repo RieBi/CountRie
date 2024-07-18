@@ -7,9 +7,8 @@ namespace Application.Converters;
 internal class CountryConverter(DataContext context, IMapper mapper)
 {
     private readonly DataContext _context = context;
-    private readonly IMapper _mapper = mapper;
 
-    public async Task<Country?> TryConvertFromDto(CountryCreateDto dto, CancellationToken cancellationToken)
+    public async Task<Country?> TryConvertFromDto(CountryCreateDto dto, CancellationToken cancellationToken, Country? country = null)
     {
         var govType = await _context.GovernanceTypes
             .Where(f => f.Name == dto.GovernanceTypeName)
@@ -50,7 +49,13 @@ internal class CountryConverter(DataContext context, IMapper mapper)
         if (specialties.Exists(f => f is null))
             return null;
 
-        var country = _mapper.Map<Country>(dto);
+        country ??= new();
+        country.Name = dto.Name;
+        country.Description = dto.Description;
+        country.LongDescription = dto.Description;
+        country.Capital = dto.Capital;
+        country.Area = dto.Area;
+        country.Population = dto.Population;
         country.GovernanceType = govType;
         country.Language = lang;
         country.Religion = religion;

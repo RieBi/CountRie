@@ -13,7 +13,5 @@ public class MappingProfiles : Profile
 
         CreateMap<Character, CharacterListDto>();
         CreateMap<Character, CharacterDetailsDto>();
-
-        CreateMap<CountryCreateDto, Country>();
     }
 }
