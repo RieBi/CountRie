@@ -13,6 +13,6 @@ public class CountryCreateDto
     public string ReligionName { get; set; } = default!;
     public string FlagUrl { get; set; } = default!;
 
-    public IList<string> NaturalResourceNames { get; set; } = default!;
-    public IList<string> SpecialtyNames { get; set; } = default!;
+    public IList<string> NaturalResourceNames { get; set; } = [];
+    public IList<string> SpecialtyNames { get; set; } = [];
 }

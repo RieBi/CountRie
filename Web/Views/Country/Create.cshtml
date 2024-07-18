@@ -1,4 +1,6 @@
 ﻿@using Application.Queries.CountryAttributeQueries
+@using Application.Queries.SpecialtyQueries
+@using Application.Queries.NaturalResourceQueries
 @using Application.Commands.CountryCommands
 @using MediatR
 @model CountryCreateDto
@@ -12,30 +14,37 @@
         <div class="mb-3">
             <label asp-for="Name" class="form-label">Country Name:</label>
             <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Description" class="form-label">Description:</label>
             <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="LongDescription" class="form-label">Long description:</label>
             <input asp-for="LongDescription" class="form-control" />
+            <span asp-validation-for="LongDescription" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Capital" class="form-label">Capital:</label>
             <input asp-for="Capital" class="form-control" />
+            <span asp-validation-for="Capital" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Population" class="form-label">Population:</label>
             <input asp-for="Population" class="form-control" />
+            <span asp-validation-for="Population" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Area" class="form-label">Area:</label>
             <input asp-for="Area" class="form-control" />
+            <span asp-validation-for="Area" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="IndependenceYear" class="form-label">Independence year:</label>
             <input asp-for="IndependenceYear" class="form-control" />
+            <span asp-validation-for="IndependenceYear" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="GovernanceTypeName" class="form-label">Governance type:</label>
@@ -45,6 +54,7 @@
                     <option value="@name">@name</option>
                 }
             </select>
+            <span asp-validation-for="GovernanceTypeName" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="LanguageName" class="form-label">Language:</label>
@@ -54,6 +64,7 @@
                     <option value="@name">@name</option>
                 }
             </select>
+            <span asp-validation-for="LanguageName" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="ReligionName" class="form-label">Religion:</label>
@@ -63,20 +74,33 @@
                     <option value="@name">@name</option>
                 }
             </select>
+            <span asp-validation-for="ReligionName" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="FlagUrl" class="form-label">Flag url:</label>
             <input type="url" asp-for="FlagUrl" class="form-control" />
+            <span asp-validation-for="FlagUrl" class="text-danger"></span>
         </div>
     </div>
 
     <div class="row border rounded p-3 m-2">
         <label class="form-label h4">Specialties</label>
-        <div id="specialties-container">
+        <div id="specialtyContainer">
         </div>
         <div class="row">
             <div class="col">
                 <button type="button" onclick="addSpecialty()" class="btn btn-primary mt-2">Add Specialty</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row border rounded p-3 m-2">
+        <label class="form-label h4">Natural resources</label>
+        <div id="naturalResourceContainer">
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="button" onclick="addNaturalResource()" class="btn btn-primary mt-2">Add Natural Resource</button>
             </div>
         </div>
     </div>
@@ -88,26 +112,58 @@
     </div>
 </form>
 
+<template id="specialtySelect">
+    <select name="SpecialtyNames" class="form-select">
+        @foreach (var name in await _mediator.Send(new GetAllSpecialtyNamesQuery()))
+        {
+            <option value="@name">@name</option>
+        }
+    </select>
+</template>
+
+<template id="naturalResourceSelect">
+    <select name="NaturalResourceNames" class="form-select">
+        @foreach (var name in await _mediator.Send(new GetAllNaturalResourceNamesQuery()))
+        {
+            <option value="@name">@name</option>
+        }
+    </select>
+</template>
+
 <script>
     let specialtyCount = 0;
     function addSpecialty() {
         const specialtyHtml = `
             <div id="specialty-${specialtyCount}" class="input-group my-1">
-                    <select class="form-select" name="Specialties">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                    ${document.querySelector('#specialtySelect').innerHTML}
                     <button type="button" onclick="removeSpecialty(${specialtyCount})" class="btn btn-primary">Remove</button>
             </div>
         `;
 
-        document.getElementById('specialties-container').innerHTML += specialtyHtml;               
+        document.getElementById('specialtyContainer').innerHTML += specialtyHtml;    
+        specialtyCount++;
     }
 
     function removeSpecialty(id) {
         let element = document.querySelector(`#specialty-${id}`);
+        element.remove();
+    }
+
+    let naturalResourceCount = 0;
+    function addNaturalResource() {
+        const naturalResourceHtml = `
+                <div id="naturalResource-${naturalResourceCount}" class="input-group my-1">
+                        ${document.querySelector('#naturalResourceSelect').innerHTML}
+                        <button type="button" onclick="removenaturalResource(${naturalResourceCount})" class="btn btn-primary">Remove</button>
+                </div>
+            `;
+
+        document.getElementById('naturalResourceContainer').innerHTML += naturalResourceHtml;
+        naturalResourceCount++;
+    }
+
+    function removenaturalResource(id) {
+        let element = document.querySelector(`#naturalResource-${id}`);
         element.remove();
     }
 </script>
