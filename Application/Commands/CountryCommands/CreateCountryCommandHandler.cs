@@ -10,13 +10,13 @@ public class CreateCountryCommandHandler(DataContext context, IMapper mapper) : 
 
     public async Task<int> Handle(CreateCountryCommand request, CancellationToken cancellationToken)
     {
-        var country = new CountryConverter(_context, _mapper)
+        var country = await new CountryConverter(_context, _mapper)
             .TryConvertFromDto(request.CountryCreateDto, cancellationToken);
 
         if (country is null)
             return -1;
 
-        await _context.AddAsync(country, cancellationToken);
+        await _context.Countries.AddAsync(country, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
 
         return country.Id;

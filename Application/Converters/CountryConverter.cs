@@ -62,6 +62,8 @@ internal class CountryConverter(DataContext context, IMapper mapper)
         country.NaturalResources = resources!;
         country.Specialties = specialties!;
 
+        country.FlagUrl = dto.FlagUrl;
+
         return country;
     }
 }
