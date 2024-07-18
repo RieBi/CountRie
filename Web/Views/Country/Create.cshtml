@@ -1,14 +1,72 @@
-﻿@using Application.Queries.CountryQueries
-@model CountryDetailsDto
+﻿@using Application.Queries.CountryAttributeQueries
+@using Application.Commands.CountryCommands
+@using MediatR
+@model CountryCreateDto
+@inject IMediator _mediator
 @{
 }
 
 <h2>Create Country</h2>
 <form asp-action="Create" method="post">
     <div class="row border rounded p-3 m-2">
-        <div>
-            <label asp-for="Name" for="countryName" class="form-label">Country Name:</label>
-            <input id="countryName" asp-for="Name" class="form-control" />
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Country Name:</label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Description:</label>
+            <input asp-for="Description" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="LongDescription" class="form-label">Long description:</label>
+            <input asp-for="LongDescription" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Capital" class="form-label">Capital:</label>
+            <input asp-for="Capital" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Population" class="form-label">Population:</label>
+            <input asp-for="Population" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Area" class="form-label">Area:</label>
+            <input asp-for="Area" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="IndependenceYear" class="form-label">Independence year:</label>
+            <input asp-for="IndependenceYear" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="GovernanceTypeName" class="form-label">Governance type:</label>
+            <select asp-for="GovernanceTypeName" class="form-select">
+                @foreach (var name in await _mediator.Send(new GetAllGovernanceTypeNamesQuery()))
+                {
+                    <option value="@name">@name</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="LanguageName" class="form-label">Language:</label>
+            <select asp-for="LanguageName" class="form-select">
+                @foreach (var name in await _mediator.Send(new GetAllLanguageNamesQuery()))
+                {
+                    <option value="@name">@name</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ReligionName" class="form-label">Religion:</label>
+            <select asp-for="ReligionName" class="form-select">
+                @foreach (var name in await _mediator.Send(new GetAllReligionNamesQuery()))
+                {
+                    <option value="@name">@name</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="FlagUrl" class="form-label">Flag url:</label>
+            <input type="url" asp-for="FlagUrl" class="form-control" />
         </div>
     </div>
 
