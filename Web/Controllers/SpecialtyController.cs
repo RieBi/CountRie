@@ -30,4 +30,16 @@ public class SpecialtyController(IMediator mediator, IMapper mapper) : Controlle
 
         return this.RedirectBack();
     }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit([FromForm] ShortInfoViewModel specialty)
+    {
+        if (!ModelState.IsValid)
+            return this.RedirectBack();
+
+        var specialtyModel = _mapper.Map<Specialty>(specialty);
+        await _mediator.Send(new EditSpecialtyCommand(specialtyModel));
+
+        return this.RedirectBack();
+    }
 }
