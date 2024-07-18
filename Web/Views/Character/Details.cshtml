@@ -20,7 +20,7 @@
                 <img src="@Model.PortraitUrl" class="img-fluid rounded mb-3 sizy object-fit-cover" alt="Character Image">
             </div>
             <h1 class="display-1">@Model.Name</h1>
-            <a class="text-decoration-none" asp-controller="Country" asp-action="@Model.OriginCountry.Name">
+            <a class="text-decoration-none" asp-controller="Country" asp-action="Details" asp-route-id="@Model.OriginCountry.Name">
                 <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@Model.OriginCountry.Description">
                     <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
                           data-bs-placement="bottom" data-bs-title="Origin Country">flag</span>
@@ -60,7 +60,7 @@
                                     <span class="text-success fst-italic">Winner</span>
                                 </div>
                                 <div class="col-6 text-end">
-                                    <p><a asp-controller="Country" asp-action="@battle.Country.Name" class="text-reset">@battle.Country.Name</a></p>
+                                    <p><a asp-controller="Country" asp-action="Details" asp-route-id="@battle.Country.Name" class="text-reset">@battle.Country.Name</a></p>
                                     <span class="text-danger fst-italic">Loser</span>
                                 </div>
                             </div>

@@ -17,7 +17,7 @@
                             <span class="text-success fst-italic">Winner</span>
                         </div>
                         <div class="col-6 text-end">
-                            <p><a asp-controller="Country" asp-action="@battle.Country.Name" class="text-reset">@battle.Country.Name</a></p>
+                            <p><a asp-controller="Country" asp-action="Details" asp-route-id="@battle.Country.Name" class="text-reset">@battle.Country.Name</a></p>
                             <span class="text-danger fst-italic">Loser</span>
                         </div>
                     </div>

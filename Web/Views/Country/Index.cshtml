@@ -6,7 +6,7 @@
 }
 
 <div class="row">
-    <a href="#" class="btn btn-primary">
+    <a asp-action="Create" class="btn btn-primary">
         <span class="material-symbols-outlined">contract_edit</span>
         Create new country
     </a>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="anchor-base">
-                    <a id="@c.Name" asp-action="@c.Name" class="text-decoration-none"><h1 class="display-4 d-inline-block">@c.Name</h1></a>
+                        <a id="@c.Name" asp-action="Details" asp-route-id="@c.Name" class="text-decoration-none"><h1 class="display-4 d-inline-block">@c.Name</h1></a>
                     <a href="#@c.Name" class="display-4 anchor-link d-inline-block mx-2">#</a>
                     </div>
                     <p class="lead">@c.Description</p>
