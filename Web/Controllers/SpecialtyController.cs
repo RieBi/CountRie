@@ -42,4 +42,15 @@ public class SpecialtyController(IMediator mediator, IMapper mapper) : Controlle
 
         return this.RedirectBack();
     }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(int id)
+    {
+        if (!ModelState.IsValid)
+            return this.RedirectBack();
+
+        await _mediator.Send(new DeleteSpecialtyCommand(id));
+
+        return this.RedirectBack();
+    }
 }
