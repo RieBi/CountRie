@@ -1,4 +1,5 @@
-﻿using Application.Queries.CharacterQueries;
+﻿using Application.Commands.CountryCommands;
+using Application.Queries.CharacterQueries;
 using Application.Queries.CountryQueries;
 using Data.Models;
 
@@ -12,5 +13,7 @@ public class MappingProfiles : Profile
 
         CreateMap<Character, CharacterListDto>();
         CreateMap<Character, CharacterDetailsDto>();
+
+        CreateMap<CountryCreateDto, Country>();
     }
 }
