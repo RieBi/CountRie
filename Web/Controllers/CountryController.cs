@@ -1,4 +1,5 @@
-﻿using Application.Queries.CountryQueries;
+﻿using Application.Commands.CountryCommands;
+using Application.Queries.CountryQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,8 +26,20 @@ public class CountryController(IMediator mediator) : Controller
         return View(country);
     }
 
+    [HttpGet]
     public IActionResult Create()
     {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(CountryCreateDto country)
+    {
+        if (!ModelState.IsValid)
+            return View();
+
+        await _mediator.Send(new CreateCountryCommand(country));
+
         return View();
     }
 }
