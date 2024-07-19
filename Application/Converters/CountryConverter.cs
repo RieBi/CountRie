@@ -52,7 +52,7 @@ internal class CountryConverter(DataContext context, IMapper mapper)
         country ??= new();
         country.Name = dto.Name;
         country.Description = dto.Description;
-        country.LongDescription = dto.Description;
+        country.LongDescription = dto.LongDescription;
         country.Capital = dto.Capital;
         country.Area = dto.Area;
         country.Population = dto.Population;
