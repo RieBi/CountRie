@@ -44,7 +44,7 @@ public class CountryController(IMediator mediator) : Controller
 
         await _mediator.Send(new CreateCountryCommand(country));
 
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Details), new { name = country.Name });
     }
 
     [HttpGet("[Controller]/[Action]/{name}")]
@@ -71,6 +71,6 @@ public class CountryController(IMediator mediator) : Controller
 
         await _mediator.Send(new EditCountryCommand(id, country));
 
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Details), new { name = country.Name });
     }
 }
