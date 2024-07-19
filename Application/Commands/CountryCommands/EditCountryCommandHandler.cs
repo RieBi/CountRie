@@ -18,7 +18,7 @@ public class EditCountryCommandHandler(DataContext context, IMapper mapper) : IR
         if (country is null)
             return Unit.Value;
 
-        country = await new CountryConverter(_context, _mapper)
+        country = await new CountryConverter(_context)
             .TryConvertFromDto(request.CountryCreateDto, cancellationToken, country);
 
         if (country is null)
