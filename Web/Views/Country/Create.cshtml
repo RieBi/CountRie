@@ -134,13 +134,17 @@
     let specialtyCount = 0;
     function addSpecialty() {
         const specialtyHtml = `
-            <div id="specialty-${specialtyCount}" class="input-group my-1">
-                    ${document.querySelector('#specialtySelect').innerHTML}
-                    <button type="button" onclick="removeSpecialty(${specialtyCount})" class="btn btn-primary">Remove</button>
-            </div>
-        `;
+                    <div id="specialty-${specialtyCount}" class="input-group my-1">
+                            ${document.querySelector('#specialtySelect').innerHTML}
+                            <button type="button" onclick="removeSpecialty(${specialtyCount})" class="btn btn-primary">Remove</button>
+                    </div>
+                `;
 
-        document.getElementById('specialtyContainer').innerHTML += specialtyHtml;    
+        let container = document.getElementById('specialtyContainer');
+        let newElem = document.createElement('div');
+        container.appendChild(newElem);
+        newElem.outerHTML = specialtyHtml;
+
         specialtyCount++;
     }
 
@@ -152,13 +156,17 @@
     let naturalResourceCount = 0;
     function addNaturalResource() {
         const naturalResourceHtml = `
-                <div id="naturalResource-${naturalResourceCount}" class="input-group my-1">
-                        ${document.querySelector('#naturalResourceSelect').innerHTML}
-                        <button type="button" onclick="removenaturalResource(${naturalResourceCount})" class="btn btn-primary">Remove</button>
-                </div>
+                        <div id="naturalResource-${naturalResourceCount}" class="input-group my-1">
+                                ${document.querySelector('#naturalResourceSelect').innerHTML}
+                                <button type="button" onclick="removenaturalResource(${naturalResourceCount})" class="btn btn-primary">Remove</button>
+                        </div>
             `;
 
-        document.getElementById('naturalResourceContainer').innerHTML += naturalResourceHtml;
+        let container = document.getElementById('naturalResourceContainer');
+        let newElem = document.createElement('div');
+        container.appendChild(newElem);
+        newElem.outerHTML = naturalResourceHtml;
+
         naturalResourceCount++;
     }
 
