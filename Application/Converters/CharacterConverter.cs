@@ -29,7 +29,7 @@ internal class CharacterConverter(DataContext context)
         character.BirthDate = dto.BirthDate;
         character.OriginCountry = country;
         character.PortraitUrl = dto.PortraitUrl;
-        character.Power = dto.Power;
+        character.Power = 1;
 
         return character;
     }

@@ -9,5 +9,4 @@ public class CharacterCreateDto
     public DateOnly BirthDate { get; set; }
     public string OriginCountryName { get; set; } = default!;
     public string PortraitUrl { get; set; } = default!;
-    public int Power { get; set; }
 }
