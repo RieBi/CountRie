@@ -6,10 +6,12 @@
 @model CountryCreateDto
 @inject IMediator _mediator
 @{
+    int id = (int)(ViewData["id"] ?? -1);
 }
 
 <h2>Edit Country</h2>
 <form asp-action="Edit" method="post">
+    <input type="hidden" name="id" value="@id" />
     <div class="row border rounded p-3 m-2">
         <div class="mb-3">
             <label asp-for="Name" class="form-label">Country Name:</label>

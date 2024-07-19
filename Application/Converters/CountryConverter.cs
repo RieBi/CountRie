@@ -59,6 +59,7 @@ internal class CountryConverter(DataContext context, IMapper mapper)
         country.GovernanceType = govType;
         country.Language = lang;
         country.Religion = religion;
+
         country.NaturalResources = resources!;
         country.Specialties = specialties!;
 

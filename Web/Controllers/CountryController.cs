@@ -40,6 +40,33 @@ public class CountryController(IMediator mediator) : Controller
 
         await _mediator.Send(new CreateCountryCommand(country));
 
-        return View();
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpGet("[Controller]/[Action]/{name}")]
+    public async Task<IActionResult> Edit(string name)
+    {
+        var countryId = await _mediator.Send(new GetCountryIdByNameQuery(name));
+        if (countryId == -1)
+            return this.RedirectBack();
+
+        var countryDto = await _mediator.Send(new GetCountryCreateDtoQuery(countryId));
+
+        if (countryDto is null || !ModelState.IsValid)
+            return this.RedirectBack();
+
+        ViewData["id"] = countryId;
+        return View(countryDto);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(int id, CountryCreateDto country)
+    {
+        if (!ModelState.IsValid)
+            return this.RedirectBack();
+
+        await _mediator.Send(new EditCountryCommand(id, country));
+
+        return RedirectToAction(nameof(Index));
     }
 }
