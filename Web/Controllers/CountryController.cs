@@ -73,4 +73,13 @@ public class CountryController(IMediator mediator) : Controller
 
         return RedirectToAction(nameof(Details), new { name = country.Name });
     }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(int id)
+    {
+        if (ModelState.IsValid)
+            await _mediator.Send(new DeleteCountryCommand(id));
+
+        return RedirectToAction(nameof(Index));
+    }
 }
