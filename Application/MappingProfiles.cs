@@ -1,4 +1,5 @@
-﻿using Application.Commands.CountryCommands;
+﻿using Application.Commands.CharacterCommands;
+using Application.Commands.CountryCommands;
 using Application.Queries.CharacterQueries;
 using Application.Queries.CountryQueries;
 using Data.Models;
@@ -26,5 +27,9 @@ public class MappingProfiles : Profile
             .ForMember(f => f.SpecialtyNames,
             options => options.MapFrom(s => s.Specialties.Select(r => r.Name)))
             ;
+
+        CreateMap<Character, CharacterCreateDto>()
+            .ForMember(f => f.OriginCountryName,
+            options => options.MapFrom(s => s.OriginCountry.Name));
     }
 }
