@@ -83,4 +83,13 @@ public class CharacterController(IMediator mediator, IMapper mapper) : Controlle
 
         return RedirectToAction(nameof(Details), new { name = character.Name });
     }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(int id)
+    {
+        if (ModelState.IsValid)
+            await _mediator.Send(new DeleteCharacterCommand(id));
+
+        return RedirectToAction(nameof(Index));
+    }
 }
