@@ -56,4 +56,31 @@ public class CharacterController(IMediator mediator, IMapper mapper) : Controlle
 
         return RedirectToAction(nameof(Details), new { name = character.Name });
     }
+
+    [HttpGet("[Controller]/[Action]/{name}")]
+    public async Task<IActionResult> Edit(string name)
+    {
+        var characterId = await _mediator.Send(new GetCharacterIdByNameQuery(name));
+        if (characterId == -1)
+            return this.RedirectBack();
+
+        var characterDto = await _mediator.Send(new GetCharacterCreateDtoQuery(characterId));
+
+        if (characterDto is null || !ModelState.IsValid)
+            return this.RedirectBack();
+
+        ViewData["id"] = characterId;
+        return View(characterDto);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(int id, CharacterCreateDto character)
+    {
+        if (!ModelState.IsValid)
+            return this.RedirectBack();
+
+        await _mediator.Send(new EditCharacterCommand(id, character));
+
+        return RedirectToAction(nameof(Details), new { name = character.Name });
+    }
 }
