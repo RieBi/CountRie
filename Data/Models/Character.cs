@@ -9,6 +9,7 @@ public class Character
     public Country OriginCountry { get; set; } = default!;
     public string PortraitUrl { get; set; } = default!;
     public int Power { get; set; }
+    public string? OwnerEmail { get; set; }
 
     public ICollection<Battle> WonBattles { get; set; } = default!;
     public ICollection<Battle> LostBattles { get; set; } = default!;

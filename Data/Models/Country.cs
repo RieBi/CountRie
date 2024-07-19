@@ -13,6 +13,7 @@ public class Country
     public Language Language { get; set; } = default!;
     public Religion Religion { get; set; } = default!;
     public string FlagUrl { get; set; } = default!;
+    public string? OwnerEmail { get; set; }
 
     public ICollection<NaturalResource> NaturalResources { get; set; } = default!;
     public ICollection<Specialty> Specialties { get; set; } = default!;
