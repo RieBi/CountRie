@@ -43,14 +43,14 @@ public class BattleController(IMediator mediator, IMapper mapper) : Controller
 
         var ret = Request.Headers.Referer.ToString() + "#opponentName";
 
-        var opponentId = await _mediator.Send(new GetCharacterIdByName(opponentName));
-        if (opponentId is null)
+        var opponentId = await _mediator.Send(new GetCharacterIdByNameQuery(opponentName));
+        if (opponentId == -1)
         {
             TempData["Error"] = "The provided opponent is not a valid character.";
             return Redirect(ret);
         }
 
-        var newBattleId = await _mediator.Send(new CreateSpecificBattleCommand(characterId, opponentId.Value));
+        var newBattleId = await _mediator.Send(new CreateSpecificBattleCommand(characterId, opponentId));
 
         if (newBattleId == -1)
         {
