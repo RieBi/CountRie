@@ -21,6 +21,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
         RequireUppercase = false,
     };
 })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<DataContext>();
 
 var authBuilder = builder.Services.AddAuthentication();
