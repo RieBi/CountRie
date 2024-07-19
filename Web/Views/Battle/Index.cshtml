@@ -23,13 +23,13 @@
                     </div>
                     <p class="row">
                         <span class="col-4">
-                            <a asp-controller="Character" asp-action="@battle.WinnerCharacter.Name" class="text-start text-success">@battle.WinnerCharacter.Name</a>
+                            <a asp-controller="Character" asp-action="Details" asp-route-id="@battle.WinnerCharacter.Name" class="text-start text-success">@battle.WinnerCharacter.Name</a>
                         </span>
                         <span class="col-4 text-center">
                             <span class="text-violet">VS</span>
                         </span>
                         <span class="col-4 text-end">
-                            <a asp-controller="Character" asp-action="@battle.LoserCharacter.Name" class="text-danger">@battle.LoserCharacter.Name</a>
+                            <a asp-controller="Character" asp-action="Details" asp-route-id="@battle.LoserCharacter.Name" class="text-danger">@battle.LoserCharacter.Name</a>
                         </span>
                     </p>
                 </div>

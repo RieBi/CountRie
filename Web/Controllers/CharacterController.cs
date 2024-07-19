@@ -19,7 +19,7 @@ public class CharacterController(IMediator mediator, IMapper mapper) : Controlle
         return View(characters);
     }
 
-    [HttpGet("[controller]/{name}")]
+    [HttpGet("[Controller]/[Action]/{name}")]
     public async Task<IActionResult> Details(string name)
     {
         var character = await _mediator.Send(new GetCharacterDetailsQuery(name));

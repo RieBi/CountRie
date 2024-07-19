@@ -28,7 +28,7 @@
 <div class="container mt-1">
     <div class="row">
         <div class="col h3">
-            <a href=".#@Model.Name" class="nav-link d-inline">
+            <a asp-action="Index" asp-fragment="@Model.Name" class="nav-link d-inline">
                 <span class="material-symbols-outlined fs-2">arrow_back</span>
                 Back
             </a>
@@ -113,7 +113,7 @@
                     <div class="col-4">
                         <div class="card mb-3">
                             <div class="card-header">
-                                <a asp-controller="Character" asp-action="@character.Name" class="text-decoration-none"><h4 class="card-title">@character.Name</h4></a>
+                                <a asp-controller="Character" asp-action="Details" asp-route-id="@character.Name" class="text-decoration-none"><h4 class="card-title">@character.Name</h4></a>
                             </div>
                                 <img src="@character.PortraitUrl" class="" />
                             <div class="card-body">

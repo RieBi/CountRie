@@ -15,14 +15,14 @@
                 </div>
                 <div class="col-md-8">
                     <div class="anchor-base">
-                        <a id="@c.Name" asp-action="@c.Name" class="text-decoration-none"><h1 class="display-4 d-inline-block">@c.Name</h1></a>
+                        <a id="@c.Name" asp-action="Details" asp-route-id="@c.Name" class="text-decoration-none"><h1 class="display-4 d-inline-block">@c.Name</h1></a>
                         <a href="#@c.Name" class="display-4 anchor-link d-inline-block mx-2">#</a>
                     </div>
                     <p class="lead">@c.Description</p>
                     <hr class="my-4">
                     <p>
                         <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-title="Origin country">flag</span>
-                        <a asp-controller="Country" asp-action="@c.OriginCountry.Name">
+                        <a asp-controller="Country" asp-action="Details" asp-route-id="@c.OriginCountry.Name">
                             <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@c.OriginCountry.Description">
                                 @c.OriginCountry.Name
                             </span>
