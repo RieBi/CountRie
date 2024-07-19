@@ -1,8 +1,8 @@
 ﻿namespace Data;
 public static class DataConfig
 {
-    public static int NameLength { get; } = 100;
-    public static int DescriptionLength { get; } = 1000;
-    public static int LongDescriptionLength { get; } = 20000;
-    public static int UrlLength { get; } = 500;
+    public const int NameLength = 100;
+    public const int DescriptionLength = 1000;
+    public const int LongDescriptionLength = 20000;
+    public const int UrlLength = 500;
 }
