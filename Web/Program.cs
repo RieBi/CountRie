@@ -3,6 +3,7 @@ using Application.Services.BattleManagement;
 using Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Application.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -65,6 +66,8 @@ builder.Services.AddScoped<IDataSeeder, DataSeeder>();
 builder.Services.AddScoped<IBattleService, BattleService>();
 
 builder.Services.AddRazorPages();
+
+builder.Services.AddAuthorizationHandlers();
 
 var app = builder.Build();
 
