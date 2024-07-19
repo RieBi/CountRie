@@ -1,5 +1,5 @@
 ﻿namespace Application.Queries.CountryQueries;
-public class GetCountryDetailsQuery(string name) : IRequest<CountryDetailsDto?>
+public class GetCountryDetailsQuery(int id) : IRequest<CountryDetailsDto?>
 {
-    public string Name { get; set; } = name;
+    public int Id { get; set; } = id;
 }

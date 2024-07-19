@@ -19,7 +19,11 @@ public class CountryController(IMediator mediator) : Controller
     [HttpGet("[Controller]/[Action]/{name}")]
     public async Task<IActionResult> Details(string name)
     {
-        var country = await _mediator.Send(new GetCountryDetailsQuery(name));
+        var countryId = await _mediator.Send(new GetCountryIdByNameQuery(name));
+        if (countryId == -1)
+            return this.RedirectBack();
+
+        var country = await _mediator.Send(new GetCountryDetailsQuery(countryId));
         if (country is null || !ModelState.IsValid)
             return NotFound();
 

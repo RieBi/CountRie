@@ -16,7 +16,7 @@ public class GetCountryDetailsQueryHandler(DataContext context, IMapper mapper) 
             .Include(f => f.Specialties)
             .Include(f => f.NaturalResources)
             .Include(f => f.Characters)
-            .FirstOrDefaultAsync(f => f.Name == request.Name, cancellationToken);
+            .FirstOrDefaultAsync(f => f.Id == request.Id, cancellationToken);
 
         if (country is null)
             return null;
