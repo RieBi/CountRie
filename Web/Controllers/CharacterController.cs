@@ -1,8 +1,11 @@
-﻿using Application.Queries.CharacterQueries;
+﻿using Application.Commands.CharacterCommands;
+using Application.Commands.CountryCommands;
+using Application.Queries.CharacterQueries;
 using Application.Queries.CountryQueries;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Web.ViewModels.Battles;
 using Web.ViewModels.Characters;
 
@@ -35,5 +38,22 @@ public class CharacterController(IMediator mediator, IMapper mapper) : Controlle
         characterViewModel.AvailableCharactersNames = characterNames;
 
         return View(characterViewModel);
+    }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(CharacterCreateDto character)
+    {
+        if (!ModelState.IsValid)
+            return View();
+
+        await _mediator.Send(new CreateCharacterCommand(character));
+
+        return RedirectToAction(nameof(Details), new { name = character.Name });
     }
 }
