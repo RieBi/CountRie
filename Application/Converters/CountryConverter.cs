@@ -1,10 +1,8 @@
 ﻿using Application.Commands.CountryCommands;
 using Data.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Threading;
-
 namespace Application.Converters;
-internal class CountryConverter(DataContext context, IMapper mapper)
+internal class CountryConverter(DataContext context)
 {
     private readonly DataContext _context = context;
 
