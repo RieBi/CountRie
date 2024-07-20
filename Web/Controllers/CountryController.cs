@@ -1,13 +1,16 @@
-﻿using Application.Commands.CountryCommands;
+﻿using Application.Authorization;
+using Application.Commands.CountryCommands;
 using Application.Queries.CountryQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers;
 
-public class CountryController(IMediator mediator) : Controller
+public class CountryController(IMediator mediator, IAuthorizationService authorizationService) : Controller
 {
     private readonly IMediator _mediator = mediator;
+    private readonly IAuthorizationService _authorizationService = authorizationService;
 
     public async Task<IActionResult> Index()
     {
@@ -27,16 +30,21 @@ public class CountryController(IMediator mediator) : Controller
         if (country is null || !ModelState.IsValid)
             return NotFound();
 
+        var isAuthorized = await _authorizationService.AuthorizeAsync(User, countryId, Requirements.Country);
+        ViewData["authorized"] = isAuthorized.Succeeded;
+
         return View(country);
     }
 
     [HttpGet]
+    [Authorize]
     public IActionResult Create()
     {
         return View();
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Create(CountryCreateDto country)
     {
         if (!ModelState.IsValid)
@@ -48,11 +56,16 @@ public class CountryController(IMediator mediator) : Controller
     }
 
     [HttpGet("[Controller]/[Action]/{name}")]
+    [Authorize]
     public async Task<IActionResult> Edit(string name)
     {
         var countryId = await _mediator.Send(new GetCountryIdByNameQuery(name));
         if (countryId == -1)
             return this.RedirectBack();
+
+        var isAuthorized = await _authorizationService.AuthorizeAsync(User, countryId, Requirements.Country);
+        if (!isAuthorized.Succeeded)
+            return Forbid();
 
         var countryDto = await _mediator.Send(new GetCountryCreateDtoQuery(countryId));
 
@@ -64,8 +77,13 @@ public class CountryController(IMediator mediator) : Controller
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Edit(int id, CountryCreateDto country)
     {
+        var isAuthorized = await _authorizationService.AuthorizeAsync(User, id, Requirements.Country);
+        if (!isAuthorized.Succeeded)
+            return Forbid();
+
         if (!ModelState.IsValid)
             return this.RedirectBack();
 
@@ -75,8 +93,13 @@ public class CountryController(IMediator mediator) : Controller
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
+        var isAuthorized = await _authorizationService.AuthorizeAsync(User, id, Requirements.Country);
+        if (!isAuthorized.Succeeded)
+            return Forbid();
+
         if (ModelState.IsValid)
             await _mediator.Send(new DeleteCountryCommand(id));
 
