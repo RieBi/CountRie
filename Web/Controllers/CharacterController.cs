@@ -1,19 +1,19 @@
-﻿using Application.Commands.CharacterCommands;
-using Application.Commands.CountryCommands;
+﻿using Application.Authorization;
+using Application.Commands.CharacterCommands;
 using Application.Queries.CharacterQueries;
-using Application.Queries.CountryQueries;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Web.ViewModels.Battles;
 using Web.ViewModels.Characters;
 
 namespace Web.Controllers;
-public class CharacterController(IMediator mediator, IMapper mapper) : Controller
+public class CharacterController(IMediator mediator, IMapper mapper, IAuthorizationService authorizationService) : Controller
 {
     private readonly IMediator _mediator = mediator;
     private readonly IMapper _mapper = mapper;
+    private readonly IAuthorizationService _authorizationService = authorizationService;
 
     public async Task<IActionResult> Index()
     {
@@ -37,16 +37,21 @@ public class CharacterController(IMediator mediator, IMapper mapper) : Controlle
         characterViewModel.Battles = characterViewModelBattles;
         characterViewModel.AvailableCharactersNames = characterNames;
 
+        var isAuthorized = await _authorizationService.AuthorizeAsync(User, character.Id, Requirements.Character);
+        ViewData["authorized"] = isAuthorized.Succeeded;
+
         return View(characterViewModel);
     }
 
     [HttpGet]
+    [Authorize]
     public IActionResult Create()
     {
         return View();
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Create(CharacterCreateDto character)
     {
         if (!ModelState.IsValid)
@@ -58,11 +63,16 @@ public class CharacterController(IMediator mediator, IMapper mapper) : Controlle
     }
 
     [HttpGet("[Controller]/[Action]/{name}")]
+    [Authorize]
     public async Task<IActionResult> Edit(string name)
     {
         var characterId = await _mediator.Send(new GetCharacterIdByNameQuery(name));
         if (characterId == -1)
             return this.RedirectBack();
+
+        var isAuthorized = await _authorizationService.AuthorizeAsync(User, characterId, Requirements.Character);
+        if (!isAuthorized.Succeeded)
+            return Forbid();
 
         var characterDto = await _mediator.Send(new GetCharacterCreateDtoQuery(characterId));
 
@@ -74,8 +84,13 @@ public class CharacterController(IMediator mediator, IMapper mapper) : Controlle
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Edit(int id, CharacterCreateDto character)
     {
+        var isAuthorized = await _authorizationService.AuthorizeAsync(User, id, Requirements.Character);
+        if (!isAuthorized.Succeeded)
+            return Forbid();
+
         if (!ModelState.IsValid)
             return this.RedirectBack();
 
@@ -85,8 +100,13 @@ public class CharacterController(IMediator mediator, IMapper mapper) : Controlle
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
+        var isAuthorized = await _authorizationService.AuthorizeAsync(User, id, Requirements.Character);
+        if (!isAuthorized.Succeeded)
+            return Forbid();
+
         if (ModelState.IsValid)
             await _mediator.Send(new DeleteCharacterCommand(id));
 
