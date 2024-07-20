@@ -3,6 +3,7 @@ using Application.Queries.SpecialtyQueries;
 using AutoMapper;
 using Data.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.ViewModels;
 
@@ -20,6 +21,7 @@ public class SpecialtyController(IMediator mediator, IMapper mapper) : Controlle
     }
 
     [HttpPost]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> Create([FromForm] ShortInfoViewModel specialty)
     {
         if (!ModelState.IsValid)
@@ -32,6 +34,7 @@ public class SpecialtyController(IMediator mediator, IMapper mapper) : Controlle
     }
 
     [HttpPost]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> Edit([FromForm] ShortInfoViewModel specialty)
     {
         if (!ModelState.IsValid)
@@ -44,6 +47,7 @@ public class SpecialtyController(IMediator mediator, IMapper mapper) : Controlle
     }
 
     [HttpPost]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> Delete(int id)
     {
         if (!ModelState.IsValid)

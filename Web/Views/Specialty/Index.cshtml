@@ -3,82 +3,86 @@
 @model IList<Specialty>
 @{
     ViewData["Title"] = "Specialties";
+    var isAuthorized = User.IsInRole("admin");
 }
 
 <div class="container mt-1">
-    <div class="modal fade" id="createModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">Create new specialty?</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form method="post" id="createForm">
-                    <div class="modal-body fw-bold">
-                        <label for="createName" class="form-label">Name</label>
-                        <input type="text" id="createName" name="Name" minlength="1" maxlength="@DataConfig.NameLength" class="form-control" autocomplete="off">
-
-                        <label for="createDescription" class="form-label">Description</label>
-                        <input type="text" id="createDescription" name="Description" minlength="1" maxlength="@DataConfig.DescriptionLength" class="form-control" autocomplete="off">
-
-                        <input type="hidden" id="createId" name="Id" value="0" />
+    @if (isAuthorized)
+    {
+        <div class="modal fade" id="createModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Create new specialty?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button asp-action="Create" type="submit" class="btn btn-primary">Create</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+                    <form method="post" id="createForm">
+                        <div class="modal-body fw-bold">
+                            <label for="createName" class="form-label">Name</label>
+                            <input type="text" id="createName" name="Name" minlength="1" maxlength="@DataConfig.NameLength" class="form-control" autocomplete="off">
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Create new specialty</button>
+                            <label for="createDescription" class="form-label">Description</label>
+                            <input type="text" id="createDescription" name="Description" minlength="1" maxlength="@DataConfig.DescriptionLength" class="form-control" autocomplete="off">
 
-    <div class="modal fade" id="deleteModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">Delete <span id="deleteNameTitle"></span>?</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-danger fw-bold">
-                    Are you sure you want to delete <span id="deleteName"></span> forever? This action is permanent. There's no going back.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <form method="post" id="deleteForm">
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                            <input type="hidden" id="createId" name="Id" value="0" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button asp-action="Create" type="submit" class="btn btn-primary">Create</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="modal fade" id="editModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">Edit <span id="editNameTitle"></span>?</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form method="post" id="editForm">
-                    <div class="modal-body fw-bold">
-                        <label for="editName" class="form-label">Name</label>
-                        <input type="text" id="editName" name="Name" minlength="1" maxlength="@DataConfig.NameLength" class="form-control" autocomplete="off">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Create new specialty</button>
 
-                        <label for="editDescription" class="form-label">Description</label>
-                        <input type="text" id="editDescription" name="Description" minlength="1" maxlength="@DataConfig.DescriptionLength" class="form-control" autocomplete="off">
-
-                        <input type="hidden" id="editId" name="Id" />
+        <div class="modal fade" id="deleteModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Delete <span id="deleteNameTitle"></span>?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-danger fw-bold">
+                        Are you sure you want to delete <span id="deleteName"></span> forever? This action is permanent. There's no going back.
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Save changes</button>
+                        <form method="post" id="deleteForm">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
+
+        <div class="modal fade" id="editModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Edit <span id="editNameTitle"></span>?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="post" id="editForm">
+                        <div class="modal-body fw-bold">
+                            <label for="editName" class="form-label">Name</label>
+                            <input type="text" id="editName" name="Name" minlength="1" maxlength="@DataConfig.NameLength" class="form-control" autocomplete="off">
+
+                            <label for="editDescription" class="form-label">Description</label>
+                            <input type="text" id="editDescription" name="Description" minlength="1" maxlength="@DataConfig.DescriptionLength" class="form-control" autocomplete="off">
+
+                            <input type="hidden" id="editId" name="Id" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
 
     @foreach (var specialty in Model)
     {
@@ -88,38 +92,44 @@
                     <div class="col-10">
                         <span class="badge custom-badge">@specialty.Name</span> - @specialty.Description
                     </div>
-                    <div class="col-1">
-                        <button type="button" onclick="showEditModal('@specialty.Id', '@specialty.Name', '@specialty.Description')"
-                                data-bs-toggle="modal" data-bs-target="#editModal"
-                                class="btn btn-link p-0 material-symbols-outlined float-end text-decoration-none">
-                            brush
-                        </button>
-                    </div>
-                    <div class="col-1">
-                        <button type="button" onclick="showDeleteModal('@specialty.Id', '@specialty.Name')"
-                                data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                class="btn btn-link p-0 material-symbols-outlined float-end text-decoration-none">
-                            delete_forever
-                        </button>
-                    </div>
+                    @if (isAuthorized)
+                    {
+                        <div class="col-1">
+                            <button type="button" onclick="showEditModal('@specialty.Id', '@specialty.Name', '@specialty.Description')"
+                            data-bs-toggle="modal" data-bs-target="#editModal"
+                            class="btn btn-link p-0 material-symbols-outlined float-end text-decoration-none">
+                                brush
+                            </button>
+                        </div>
+                        <div class="col-1">
+                            <button type="button" onclick="showDeleteModal('@specialty.Id', '@specialty.Name')"
+                            data-bs-toggle="modal" data-bs-target="#deleteModal"
+                            class="btn btn-link p-0 material-symbols-outlined float-end text-decoration-none">
+                                delete_forever
+                            </button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
     }
 </div>
 
-<script>
-    function showDeleteModal(id, name) {
+@if (isAuthorized)
+{
+    <script>
+        function showDeleteModal(id, name) {
         document.getElementById('deleteNameTitle').textContent = name;
         document.getElementById('deleteName').textContent = name;
         document.getElementById('deleteForm').action = '/Specialty/Delete/' + id;
-    }
+        }
 
-    function showEditModal(id, name, description) {
+        function showEditModal(id, name, description) {
         document.getElementById('editNameTitle').textContent = name;
         document.getElementById('editName').value = name;
         document.getElementById('editDescription').value = description;
         document.getElementById('editId').value = id;
         document.getElementById('editForm').action = '/Specialty/Edit/';
-    }
-</script>
+        }
+    </script>
+}
