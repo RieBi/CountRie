@@ -324,7 +324,17 @@ public class DataSeeder(DataContext dataContext) : IDataSeeder
                 OriginCountry = countries.Single(c => c.Name == "India"),
                 PortraitUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_F_nLbFmr5xy_YL8Q7CLRr3x381EkYneqsg&s",
                 Power = 1
-            }
+            },
+            new()
+            {
+                Name = "Giga Chad",
+                Description = "A legendary chad from Australia",
+                LongDescription = "Giga Chad, the man whose jawline could cut diamonds and whose biceps have their own area codes, emerged from the primordial soup of internet memes fully formed and glistening with baby oil. Legend has it that he was born when a lightning bolt struck a gym selfie, bringing to life the collective fantasies of bodybuilding forums worldwide.\r\nAs a young chad-ling, Giga Chad quickly established dominance in his preschool by bench-pressing the jungle gym and using protein shakes instead of finger paints. His kindergarten teacher once tried to put him in time-out, only to find him doing one-armed push-ups in the corner while simultaneously giving motivational speeches to his stuffed animals. By high school, his shoulders had become so broad that he had to turn sideways to fit through doors, a problem he solved by simply walking through walls instead.\r\nGiga Chad's rise to internet fame was as swift as his one-rep max was heavy. Photographers would try to capture his likeness, only to find their cameras swooning and their lenses developing visible abs. His Instagram posts became so powerful that they caused global surges in gym memberships and temporary shortages of whey protein. Scientists studied his DNA, hoping to unlock the secrets of his Chad-ness, but their lab equipment kept short-circuiting in the presence of his raw masculinity.\r\nDespite his intimidating physique, Giga Chad is known for his surprisingly gentle nature. He volunteers at animal shelters, where he can often be found benching full-grown bears to help them hibernate. His dating profile simply reads \"I lift, therefore I am,\" yet he receives more matches per second than there are stars in the galaxy. Giga Chad continues to inspire millions around the world, proving that with enough dedication, protein, and genetic impossibility, anyone can become a living, breathing embodiment of hypermasculine internet ideals. His life motto, \"Never skip existence day,\" serves as a beacon of hope for gym bros and meme enthusiasts alike.",
+                BirthDate = new DateOnly(1990, 9, 17),
+                OriginCountry = countries.Single(c => c.Name == "Australia"),
+                PortraitUrl = "https://static.wikia.nocookie.net/joke-battles/images/d/df/Gigachad.png/revision/latest?cb=20230812064835",
+                Power = 1
+            },
         };
 
         context.Languages.AddRange(languages);
