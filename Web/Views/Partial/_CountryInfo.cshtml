@@ -1,0 +1,38 @@
+﻿@using Application.Queries.CountryQueries
+@model CountryListDto
+
+<div class="container mt-3 mb-5">
+    <div class="p-5 bg-light rounded-3">
+        <div class="row p-5 bg-light rounded-3">
+            <div class="col-md-4">
+                <img src="@Model.FlagUrl" class="img-fluid rounded" alt="Country Image">
+            </div>
+            <div class="col-md-8">
+                <div class="anchor-base">
+                    <a id="@Model.Name" asp-controller="Country" asp-action="Details" asp-route-id="@Model.Name" class="text-decoration-none"><h1 class="display-4 d-inline-block">@Model.Name</h1></a>
+                    <a href="#@Model.Name" class="display-4 anchor-link d-inline-block mx-2">#</a>
+                </div>
+                <p class="lead">@Model.Description</p>
+                <hr class="my-4">
+                <p>
+                    <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-title="Governance type">account_balance</span>
+                    <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@Model.GovernanceType.Description">
+                        @Model.GovernanceType.Name
+                    </span>
+                </p>
+                <p>
+                    <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-title="Language">language</span>
+                    <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@Model.Language.Description">
+                        @Model.Language.Name
+                    </span>
+                </p>
+                <p>
+                    <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-title="Religion">church</span>
+                    <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@Model.Religion.Description">
+                        @Model.Religion.Name
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
