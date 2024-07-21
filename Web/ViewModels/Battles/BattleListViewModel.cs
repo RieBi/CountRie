@@ -2,6 +2,7 @@
 
 public class BattleListViewModel
 {
-    public IList<BattleDetailsViewModel> Battles { get; set; } = default!;
-    public string BattleName { get; set; } = default!;
+    public required IList<BattleDetailsViewModel> Battles { get; set; } = [];
+    public required string BattleName { get; set; } = default!;
+    public required IList<string> CharacterNames { get; set; } = [];
 }

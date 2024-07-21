@@ -18,11 +18,13 @@ public class BattleController(IMediator mediator, IMapper mapper) : Controller
         var battlesViewModels = _mapper.Map<IList<BattleDetailsViewModel>>(battles);
 
         var randomBattleName = await _mediator.Send(new GetRandomBattleNameQuery());
+        var characterNames = await _mediator.Send(new GetAllCharacterNamesQuery());
         
         var viewModel = new BattleListViewModel()
         {
             Battles = battlesViewModels,
             BattleName = randomBattleName,
+            CharacterNames = characterNames,
         };
 
         return View(viewModel);

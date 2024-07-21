@@ -1,4 +1,5 @@
-﻿@using Web.ViewModels.Battles
+﻿@using Data
+@using Web.ViewModels.Battles
 @model BattleListViewModel
 @{
     ViewData["Title"] = "Battles";
@@ -9,6 +10,49 @@
         <span class="material-symbols-outlined">contract_edit</span>
         Create new battle
     </button>
+</div>
+
+<div class="modal fade" id="createModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Create new battle?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" id="createForm">
+                <div class="modal-body fw-bold">
+                    <div class="mb-2">
+                        <label for="createName" class="form-label">Name</label>
+                        <input type="text" id="createName" name="Name" minlength="1" maxlength="@DataConfig.NameLength" value="@Model.BattleName" class="form-control" autocomplete="off">
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="createCharacter1" class="form-label">First character</label> 
+                        <select id="createCharacter1" class="form-select">
+                            @foreach (var name in Model.CharacterNames)
+                            {
+                                <option value="@name">@name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="createCharacter2" class="form-label">Second character</label>
+                        <select id="createCharacter2" class="form-select">
+                            @foreach (var name in Model.CharacterNames)
+                            {
+                                <option value="@name">@name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button asp-action="Create" type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <div class="container mt-1">
