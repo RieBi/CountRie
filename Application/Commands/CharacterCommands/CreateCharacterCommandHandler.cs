@@ -1,9 +1,11 @@
 ﻿using Application.Converters;
+using Application.Services.UserManagement;
 
 namespace Application.Commands.CharacterCommands;
-public class CreateCharacterCommandHandler(DataContext context) : IRequestHandler<CreateCharacterCommand, int>
+public class CreateCharacterCommandHandler(DataContext context, IUserInfoService userInfo) : IRequestHandler<CreateCharacterCommand, int>
 {
     private readonly DataContext _context = context;
+    private readonly IUserInfoService _userInfo = userInfo;
 
     public async Task<int> Handle(CreateCharacterCommand request, CancellationToken cancellationToken)
     {
@@ -12,6 +14,8 @@ public class CreateCharacterCommandHandler(DataContext context) : IRequestHandle
 
         if (character is null)
             return -1;
+
+        character.OwnerEmail = await _userInfo.GetUserEmailAsync(request.User);
 
         await _context.Characters.AddAsync(character, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
