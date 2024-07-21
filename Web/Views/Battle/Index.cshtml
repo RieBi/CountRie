@@ -4,6 +4,13 @@
     ViewData["Title"] = "Battles";
 }
 
+<div class="row">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#createModal" class="btn btn-primary">
+        <span class="material-symbols-outlined">contract_edit</span>
+        Create new battle
+    </button>
+</div>
+
 <div class="container mt-1">
     <div class="row">
         @foreach (var battle in Model)
