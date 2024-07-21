@@ -70,4 +70,22 @@ public class BattleController(IMediator mediator, IMapper mapper) : Controller
         return Redirect(Request.Headers.Referer.ToString() + $"#b-{newBattleId}");
 
     }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateNamedBattle(string characterName1, string characterName2, string battleName)
+    {
+        if (!ModelState.IsValid || characterName1 == characterName2)
+            return RedirectToAction(nameof(Index));
+
+        var characterId1 = await _mediator.Send(new GetCharacterIdByNameQuery(characterName1));
+        if (characterId1 == -1)
+            return RedirectToAction(nameof(Index));
+
+        var characterId2 = await _mediator.Send(new GetCharacterIdByNameQuery(characterName2));
+        if (characterId2 == -1)
+            return RedirectToAction(nameof(Index));
+        
+        var battleId = await _mediator.Send(new CreateNamedBattleCommand(characterId1, characterId2, battleName));
+        return RedirectToAction(nameof(Index), "Battle", $"b-{battleId}");
+    }
 }
