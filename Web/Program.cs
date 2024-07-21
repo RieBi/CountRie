@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Application.Authorization;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Application.Services.UserManagement;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,6 +71,7 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(ty
 
 builder.Services.AddScoped<IDataSeeder, DataSeeder>();
 builder.Services.AddScoped<IBattleService, BattleService>();
+builder.Services.AddScoped<IUserInfoService, UserInfoService>();
 
 builder.Services.AddRazorPages();
 
