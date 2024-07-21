@@ -14,35 +14,5 @@
 
 @foreach (var c in Model)
 {
-    <div class="container mt-3 mb-5">
-        <div class="p-5 bg-light rounded-3">
-            <div class="row p-5 bg-light rounded-3">
-                <div class="col-md-4">
-                    <img src="@c.PortraitUrl" class="img-fluid rounded" alt="Country Image">
-                </div>
-                <div class="col-md-8">
-                    <div class="anchor-base">
-                        <a id="@c.Name" asp-controller="Character" asp-action="Details" asp-route-id="@c.Name" class="text-decoration-none"><h1 class="display-4 d-inline-block">@c.Name</h1></a>
-                        <a href="#@c.Name" class="display-4 anchor-link d-inline-block mx-2">#</a>
-                    </div>
-                    <p class="lead">@c.Description</p>
-                    <hr class="my-4">
-                    <p>
-                        <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-title="Origin country">flag</span>
-                        <a asp-controller="Country" asp-action="Details" asp-route-id="@c.OriginCountry.Name">
-                            <span class="badge text-bg-secondary fs-6" data-bs-toggle="tooltip" data-bs-title="@c.OriginCountry.Description">
-                                @c.OriginCountry.Name
-                            </span>
-                        </a>
-                    </p>
-                    <p>
-                        <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-title="Power">bolt</span>
-                        <span class="badge text-bg-secondary fs-6">
-                            @c.Power
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <partial name="_CharacterInfo" model="c" />
 }
