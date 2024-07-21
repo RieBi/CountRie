@@ -7,7 +7,18 @@ public class BattleService(DataContext context) : IBattleService
 {
     private readonly DataContext _context = context;
 
+    public async Task<Battle> ExecuteBattleAsync(int characterId)
+    {
+        var characterB = GetRandomOpponent(characterId);
+        return await ExecuteBattleAsync(characterId, characterB.Id);
+    }
+
     public async Task<Battle> ExecuteBattleAsync(int characterAId, int characterBId)
+    {
+        return await ExecuteBattleAsync(characterAId, characterBId, GenerateRandomBattleName());
+    }
+
+    public async Task<Battle> ExecuteBattleAsync(int characterAId, int characterBId, string battleName)
     {
         var characterA = await _context.Characters
             .Include(f => f.OriginCountry)
@@ -27,7 +38,7 @@ public class BattleService(DataContext context) : IBattleService
 
         var battle = new Battle()
         {
-            Name = GenerateRandomBattleName(),
+            Name = battleName,
             WinnerCharacter = winner,
             LoserCharacter = loser,
             Country = country,
@@ -41,12 +52,6 @@ public class BattleService(DataContext context) : IBattleService
 
         await _context.SaveChangesAsync();
         return info.Entity;
-    }
-
-    public async Task<Battle> ExecuteBattleAsync(int characterId)
-    {
-        var characterB = GetRandomOpponent(characterId);
-        return await ExecuteBattleAsync(characterId, characterB.Id);
     }
 
     public Character GetRandomOpponent(int excludedCharacterId)
@@ -397,7 +402,7 @@ public class BattleService(DataContext context) : IBattleService
         "world",
     ];
 
-    private string GenerateRandomBattleName()
+    public string GenerateRandomBattleName()
     {
         var title = Capitalize(Random.Shared.GetItems(battleTitles, 1)[0]);
         var adjective = Capitalize(Random.Shared.GetItems(battleAdjectives, 1)[0]);
