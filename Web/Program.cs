@@ -4,6 +4,7 @@ using Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Application.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,7 +52,11 @@ if (facebookClientId is not null && facebookClientSecret is not null)
     });
 }
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddRazorOptions(o =>
+    {
+        o.ViewLocationFormats.Add("/Views/Partial/{0}" + RazorViewEngine.ViewExtension);
+    });
 
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreConnection")));
