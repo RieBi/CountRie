@@ -1,1 +1,17 @@
-﻿Your creations are here
+﻿@using Web.ViewModels.Personal
+@model UserCreatedViewModel
+
+@if (Model.UserCountries.Count == 0 && Model.UserCharacters.Count == 0)
+{
+    <h2>You haven't created anything yet. Go on and do it!</h2>
+}
+
+@foreach (var country in Model.UserCountries)
+{
+    <partial name="_CountryInfo" model="country" />
+}
+
+@foreach (var character in Model.UserCharacters)
+{
+    <partial name="_CharacterInfo" model="character" />
+}

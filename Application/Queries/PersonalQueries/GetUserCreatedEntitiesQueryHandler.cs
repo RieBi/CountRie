@@ -28,7 +28,7 @@ public class GetUserCreatedEntitiesQueryHandler(UserManager<IdentityUser> userMa
             .ProjectTo<CountryListDto>(_mapper.ConfigurationProvider)
             .ToListAsync(cancellationToken);
 
-        var userCharacters = await _context.Countries
+        var userCharacters = await _context.Characters
             .Where(f => f.OwnerEmail == email)
             .ProjectTo<CharacterListDto>(_mapper.ConfigurationProvider)
             .ToListAsync(cancellationToken);
