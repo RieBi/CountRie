@@ -50,7 +50,7 @@ public class CountryController(IMediator mediator, IAuthorizationService authori
         if (!ModelState.IsValid)
             return View();
 
-        await _mediator.Send(new CreateCountryCommand(country));
+        await _mediator.Send(new CreateCountryCommand(country, User));
 
         return RedirectToAction(nameof(Details), new { name = country.Name });
     }
