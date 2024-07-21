@@ -2,7 +2,6 @@
 using Application.Queries.BattleQueries;
 using Application.Queries.CharacterQueries;
 using AutoMapper;
-using Data.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Web.ViewModels.Battles;
@@ -18,7 +17,15 @@ public class BattleController(IMediator mediator, IMapper mapper) : Controller
         var battles = await _mediator.Send(new GetBattleListQuery());
         var battlesViewModels = _mapper.Map<IList<BattleDetailsViewModel>>(battles);
 
-        return View(battlesViewModels);
+        var randomBattleName = await _mediator.Send(new GetRandomBattleNameQuery());
+        
+        var viewModel = new BattleListViewModel()
+        {
+            Battles = battlesViewModels,
+            BattleName = randomBattleName,
+        };
+
+        return View(viewModel);
     }
 
     [HttpPost]

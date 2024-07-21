@@ -1,5 +1,5 @@
 ﻿@using Web.ViewModels.Battles
-@model IList<BattleDetailsViewModel>
+@model BattleListViewModel
 @{
     ViewData["Title"] = "Battles";
 }
@@ -13,7 +13,7 @@
 
 <div class="container mt-1">
     <div class="row">
-        @foreach (var battle in Model)
+        @foreach (var battle in Model.Battles)
         {
             <div id="b-@battle.Id" class="col-6">    
                 <div class="p-3 my-3 rounded-3 bg-light fs-5-5">
