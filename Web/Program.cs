@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Application.Authorization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Application.Services.UserManagement;
+using System.Data.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,7 +61,17 @@ builder.Services.AddControllersWithViews()
     });
 
 builder.Services.AddDbContext<DataContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreConnection")));
+{
+    string? connectionString;
+    if (builder.Environment.IsDevelopment())
+        connectionString = builder.Configuration.GetConnectionString("PostgreConnection");
+    else
+        connectionString = builder.Configuration.GetConnectionString("PostgreConnectionRelease");
+
+
+    connectionString = builder.Configuration.GetConnectionString("PostgreConnection");
+    options.UseNpgsql(connectionString);
+});
 
 builder.Services.AddAutoMapper(
     typeof(Application.MappingProfiles),
