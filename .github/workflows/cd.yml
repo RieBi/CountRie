@@ -1,3 +1,5 @@
+Name: DeployCountrie
+
 on:
   push:
     branches: [main]
