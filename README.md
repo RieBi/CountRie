@@ -2,7 +2,7 @@
 
 CountRie is a web application featuring a range of countries, characters, and their respective dependencies. Users can view and interact with data using a clean interface, create their own countries and characters, and engage in battles.
 
-[Access CountRie](https://countrie-fsohpe7vuq-lm.a.run.app)
+Access CountRie Website: https://countrie-fsohpe7vuq-lm.a.run.app
 
 ## Table of Contents
 - [Overview](#overview)
