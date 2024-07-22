@@ -1,4 +1,4 @@
-Name: DeployCountrie
+name: DeployCountrie
 
 on:
   push:
