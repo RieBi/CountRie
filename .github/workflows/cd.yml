@@ -26,3 +26,9 @@ jobs:
   
       - name: 'Use gcloud CLI'
         run: 'gcloud info'
+
+      - name: 'Build the docker image'
+        run: 'gcloud builds submit --tag europe-central2-docker.pkg.dev/countrie/repo/countrie:latest .'
+
+      - name: 'Deploy to Cloud Run'
+        run: 'gcloud run deploy countrie --image europe-central2-docker.pkg.dev/countrie/repo/countrie:latest --region europe-central2 --allow-unauthenticated --project countrie --max-instances=4'
