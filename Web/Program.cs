@@ -68,8 +68,6 @@ builder.Services.AddDbContext<DataContext>(options =>
     else
         connectionString = builder.Configuration.GetConnectionString("PostgreConnectionRelease");
 
-
-    connectionString = builder.Configuration.GetConnectionString("PostgreConnection");
     options.UseNpgsql(connectionString);
 });
 
