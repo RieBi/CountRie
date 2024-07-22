@@ -47,4 +47,4 @@ jobs:
         run: 'gcloud builds submit --tag europe-central2-docker.pkg.dev/countrie/repo/countrie:latest .'
 
       - name: 'Deploy to Cloud Run'
-        run: 'gcloud run deploy countrie --image europe-central2-docker.pkg.dev/countrie/repo/countrie:latest --region europe-central2 --allow-unauthenticated --project countrie --max-instances=4 -e ConnectionStrings__PostgreConnectionRelease=${{ secrets.DATABASE_CONNECTION }}'
+        run: 'gcloud run deploy countrie --image europe-central2-docker.pkg.dev/countrie/repo/countrie:latest --region europe-central2 --allow-unauthenticated --project countrie --max-instances=4 -e --update-env-vars=ConnectionStrings_PostgreConnectionRelease="${{ secrets.DATABASE_CONNECTION }}"'
