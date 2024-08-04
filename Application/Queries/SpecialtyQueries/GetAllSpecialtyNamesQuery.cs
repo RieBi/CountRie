@@ -1,4 +1,2 @@
 ﻿namespace Application.Queries.SpecialtyQueries;
-public class GetAllSpecialtyNamesQuery : IRequest<IList<string>>
-{
-}
+public record GetAllSpecialtyNamesQuery : IRequest<IList<string>>;

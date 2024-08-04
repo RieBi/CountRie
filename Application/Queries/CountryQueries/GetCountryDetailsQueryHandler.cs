@@ -1,8 +1,5 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-
-namespace Application.Queries.CountryQueries;
-public class GetCountryDetailsQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCountryDetailsQuery, CountryDetailsDto?>
+﻿namespace Application.Queries.CountryQueries;
+internal class GetCountryDetailsQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCountryDetailsQuery, CountryDetailsDto?>
 {
     private readonly DataContext _context = context;
     private readonly IMapper _mapper = mapper;

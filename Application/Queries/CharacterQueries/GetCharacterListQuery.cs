@@ -1,4 +1,2 @@
 ﻿namespace Application.Queries.CharacterQueries;
-public class GetCharacterListQuery : IRequest<IList<CharacterListDto>>
-{
-}
+public record GetCharacterListQuery : IRequest<IList<CharacterListDto>>;

@@ -1,5 +1,5 @@
 ﻿namespace Application.Commands.SpecialtyCommands;
-public class DeleteSpecialtyCommandHandler(DataContext context) : IRequestHandler<DeleteSpecialtyCommand, Unit>
+internal class DeleteSpecialtyCommandHandler(DataContext context) : IRequestHandler<DeleteSpecialtyCommand, Unit>
 {
     private readonly DataContext _context = context;
 

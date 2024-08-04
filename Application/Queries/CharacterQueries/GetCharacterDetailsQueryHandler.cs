@@ -1,8 +1,5 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-
-namespace Application.Queries.CharacterQueries;
-public class GetCharacterDetailsQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCharacterDetailsQuery, CharacterDetailsDto?>
+﻿namespace Application.Queries.CharacterQueries;
+internal class GetCharacterDetailsQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCharacterDetailsQuery, CharacterDetailsDto?>
 {
     private readonly DataContext _context = context;
     private readonly IMapper _mapper = mapper;

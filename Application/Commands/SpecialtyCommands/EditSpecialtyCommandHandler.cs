@@ -1,5 +1,5 @@
 ﻿namespace Application.Commands.SpecialtyCommands;
-public class EditSpecialtyCommandHandler(DataContext context) : IRequestHandler<EditSpecialtyCommand, Unit>
+internal class EditSpecialtyCommandHandler(DataContext context) : IRequestHandler<EditSpecialtyCommand, Unit>
 {
     private readonly DataContext _context = context;
 

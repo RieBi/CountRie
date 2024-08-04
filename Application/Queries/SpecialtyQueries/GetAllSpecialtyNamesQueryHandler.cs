@@ -1,12 +1,14 @@
 ﻿namespace Application.Queries.SpecialtyQueries;
-public class GetAllSpecialtyNamesQueryHandler(DataContext context) : IRequestHandler<GetAllSpecialtyNamesQuery, IList<string>>
+internal class GetAllSpecialtyNamesQueryHandler(DataContext context) : IRequestHandler<GetAllSpecialtyNamesQuery, IList<string>>
 {
     private readonly DataContext _context = context;
 
-    public Task<IList<string>> Handle(GetAllSpecialtyNamesQuery request, CancellationToken cancellationToken)
+    public async Task<IList<string>> Handle(GetAllSpecialtyNamesQuery request, CancellationToken cancellationToken)
     {
-        IList<string> result = [.. _context.Specialties.Select(f => f.Name)];
+        IList<string> result = await _context.Specialties
+            .Select(f => f.Name)
+            .ToListAsync(cancellationToken);
 
-        return Task.FromResult(result);
+        return result;
     }
 }

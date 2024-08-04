@@ -1,4 +1,2 @@
 ﻿namespace Application.Queries.NaturalResourceQueries;
-public class GetAllNaturalResourceNamesQuery : IRequest<IList<string>>
-{
-}
+public record GetAllNaturalResourceNamesQuery : IRequest<IList<string>>;

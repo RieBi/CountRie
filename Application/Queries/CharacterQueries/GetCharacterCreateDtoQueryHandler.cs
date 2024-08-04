@@ -1,9 +1,8 @@
 ﻿using Application.Commands.CharacterCommands;
 using AutoMapper.QueryableExtensions;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.Queries.CharacterQueries;
-public class GetCharacterCreateDtoQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCharacterCreateDtoQuery, CharacterCreateDto?>
+internal class GetCharacterCreateDtoQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCharacterCreateDtoQuery, CharacterCreateDto?>
 {
     private readonly DataContext _context = context;
     private readonly IMapper _mapper = mapper;

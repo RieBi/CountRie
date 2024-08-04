@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Application.Queries.CharacterQueries;
-public class GetCharacterListQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCharacterListQuery, IList<CharacterListDto>>
+﻿namespace Application.Queries.CharacterQueries;
+internal class GetCharacterListQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCharacterListQuery, IList<CharacterListDto>>
 {
     private readonly DataContext _context = context;
     private readonly IMapper _mapper = mapper;

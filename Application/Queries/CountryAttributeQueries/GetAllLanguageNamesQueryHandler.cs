@@ -1,12 +1,14 @@
 ﻿namespace Application.Queries.CountryAttributeQueries;
-public class GetAllLanguageNamesQueryHandler(DataContext context) : IRequestHandler<GetAllLanguageNamesQuery, IList<string>>
+internal class GetAllLanguageNamesQueryHandler(DataContext context) : IRequestHandler<GetAllLanguageNamesQuery, IList<string>>
 {
     private readonly DataContext _context = context;
 
-    public Task<IList<string>> Handle(GetAllLanguageNamesQuery request, CancellationToken cancellationToken)
+    public async Task<IList<string>> Handle(GetAllLanguageNamesQuery request, CancellationToken cancellationToken)
     {
-        IList<string> result = [.. _context.Languages.Select(f => f.Name)];
+        IList<string> result = await _context.Languages
+            .Select(f => f.Name)
+            .ToListAsync(cancellationToken);
 
-        return Task.FromResult(result);
+        return result;
     }
 }

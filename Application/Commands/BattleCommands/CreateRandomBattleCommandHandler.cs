@@ -1,8 +1,7 @@
 ﻿using Application.Services.BattleManagement;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.Commands.BattleCommands;
-public class CreateRandomBattleCommandHandler(IBattleService battleService) : IRequestHandler<CreateRandomBattleCommand, int>
+internal class CreateRandomBattleCommandHandler(IBattleService battleService) : IRequestHandler<CreateRandomBattleCommand, int>
 {
     private readonly IBattleService _battleService = battleService;
 

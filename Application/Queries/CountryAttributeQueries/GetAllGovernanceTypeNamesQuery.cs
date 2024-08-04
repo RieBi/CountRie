@@ -1,4 +1,2 @@
 ﻿namespace Application.Queries.CountryAttributeQueries;
-public class GetAllGovernanceTypeNamesQuery : IRequest<IList<string>>
-{
-}
+public record GetAllGovernanceTypeNamesQuery : IRequest<IList<string>>;

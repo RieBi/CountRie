@@ -1,8 +1,7 @@
 ﻿using Application.Converters;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.Commands.CharacterCommands;
-public class EditCharacterCommandHandler(DataContext context) : IRequestHandler<EditCharacterCommand, Unit>
+internal class EditCharacterCommandHandler(DataContext context) : IRequestHandler<EditCharacterCommand, Unit>
 {
     private readonly DataContext _context = context;
 
@@ -16,7 +15,7 @@ public class EditCharacterCommandHandler(DataContext context) : IRequestHandler<
             return Unit.Value;
 
         character = await new CharacterConverter(_context)
-            .TryConvertFromDto(request.characterCreateDto, cancellationToken, character);
+            .TryConvertFromDto(request.CharacterCreateDto, cancellationToken, character);
 
         if (character is null)
             return Unit.Value;

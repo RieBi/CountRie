@@ -8,8 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentResults" Version="3.16.0" />
     <PackageReference Include="MediatR" Version="12.3.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
   </ItemGroup>
 
@@ -20,7 +20,9 @@
   <ItemGroup>
     <Using Include="AutoMapper" />
     <Using Include="Data" />
+    <Using Include="FluentResults" />
     <Using Include="MediatR" />
+    <Using Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
 
 </Project>

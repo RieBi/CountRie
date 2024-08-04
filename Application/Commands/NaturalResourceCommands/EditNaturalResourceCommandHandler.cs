@@ -1,5 +1,5 @@
 ﻿namespace Application.Commands.NaturalResourceCommands;
-public class EditNaturalResourceCommandHandler(DataContext context) : IRequestHandler<EditNaturalResourceCommand, Unit>
+internal class EditNaturalResourceCommandHandler(DataContext context) : IRequestHandler<EditNaturalResourceCommand, Unit>
 {
     private readonly DataContext _context = context;
 

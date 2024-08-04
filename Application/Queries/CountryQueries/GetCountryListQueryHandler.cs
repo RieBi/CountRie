@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Application.Queries.CountryQueries;
-public class GetCountryListQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCountryListQuery, IList<CountryListDto>>
+﻿namespace Application.Queries.CountryQueries;
+internal class GetCountryListQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCountryListQuery, IList<CountryListDto>>
 {
     private readonly DataContext _context = context;
     private readonly IMapper _mapper = mapper;

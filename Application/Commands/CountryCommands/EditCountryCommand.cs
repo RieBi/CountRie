@@ -1,6 +1,2 @@
 ﻿namespace Application.Commands.CountryCommands;
-public class EditCountryCommand(int id, CountryCreateDto countryCreateDto) : IRequest<Unit>
-{
-    public int Id { get; } = id;
-    public CountryCreateDto CountryCreateDto { get; } = countryCreateDto;
-}
+public record EditCountryCommand(int Id, CountryCreateDto CountryCreateDto) : IRequest<Unit>;

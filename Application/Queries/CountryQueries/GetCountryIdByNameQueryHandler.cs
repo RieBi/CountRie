@@ -1,5 +1,5 @@
 ﻿namespace Application.Queries.CountryQueries;
-public class GetCountryIdByNameQueryHandler(DataContext context) : IRequestHandler<GetCountryIdByNameQuery, int>
+internal class GetCountryIdByNameQueryHandler(DataContext context) : IRequestHandler<GetCountryIdByNameQuery, int>
 {
     private readonly DataContext _context = context;
 

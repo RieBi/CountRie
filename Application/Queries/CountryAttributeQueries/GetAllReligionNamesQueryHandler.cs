@@ -1,12 +1,14 @@
 ﻿namespace Application.Queries.CountryAttributeQueries;
-public class GetAllReligionNamesQueryHandler(DataContext context) : IRequestHandler<GetAllReligionNamesQuery, IList<string>>
+internal class GetAllReligionNamesQueryHandler(DataContext context) : IRequestHandler<GetAllReligionNamesQuery, IList<string>>
 {
     private readonly DataContext _context = context;
 
-    public Task<IList<string>> Handle(GetAllReligionNamesQuery request, CancellationToken cancellationToken)
+    public async Task<IList<string>> Handle(GetAllReligionNamesQuery request, CancellationToken cancellationToken)
     {
-        IList<string> result = [.. _context.Religions.Select(f => f.Name)];
+        IList<string> result = await _context.Religions
+            .Select(f => f.Name)
+            .ToListAsync(cancellationToken);
 
-        return Task.FromResult(result);
+        return result;
     }
 }
