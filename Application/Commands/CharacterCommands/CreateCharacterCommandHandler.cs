@@ -17,7 +17,7 @@ public class CreateCharacterCommandHandler(DataContext context, IUserInfoService
 
         character.OwnerEmail = await _userInfo.GetUserEmailAsync(request.User);
 
-        await _context.Characters.AddAsync(character, cancellationToken);
+        _context.Characters.Add(character);
         await _context.SaveChangesAsync(cancellationToken);
 
         return character.Id;

@@ -5,7 +5,7 @@ public class CreateSpecialtyCommandHandler(DataContext context) : IRequestHandle
 
     public async Task<int> Handle(CreateSpecialtyCommand request, CancellationToken cancellationToken)
     {
-        await _context.Specialties.AddAsync(request.Specialty, cancellationToken);
+        _context.Specialties.Add(request.Specialty);
         await _context.SaveChangesAsync(cancellationToken);
 
         return request.Specialty.Id;

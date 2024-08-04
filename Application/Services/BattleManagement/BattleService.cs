@@ -45,7 +45,7 @@ public class BattleService(DataContext context) : IBattleService
             Date = DateOnly.FromDateTime(DateTime.UtcNow),
         };
 
-        var info = await _context.AddAsync(battle);
+        var info = _context.Add(battle);
 
         winner.Power += 2;
         loser.Power += 1;

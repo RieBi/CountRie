@@ -17,7 +17,7 @@ public class CreateCountryCommandHandler(DataContext context, IUserInfoService u
 
         country.OwnerEmail = await _userInfo.GetUserEmailAsync(request.User);
 
-        await _context.Countries.AddAsync(country, cancellationToken);
+        _context.Countries.Add(country);
         await _context.SaveChangesAsync(cancellationToken);
 
         return country.Id;
