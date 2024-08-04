@@ -4,7 +4,7 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity;
 
 namespace Application.Queries.PersonalQueries;
-public class GetUserCreatedEntitiesQueryHandler(UserManager<IdentityUser> userManager, DataContext context, IMapper mapper) : IRequestHandler<GetUserCreatedEntitiesQuery, UserCreatedDto>
+internal class GetUserCreatedEntitiesQueryHandler(UserManager<IdentityUser> userManager, DataContext context, IMapper mapper) : IRequestHandler<GetUserCreatedEntitiesQuery, UserCreatedDto>
 {
     private readonly UserManager<IdentityUser> _userManager = userManager;
     private readonly DataContext _context = context;

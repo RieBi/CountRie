@@ -1,5 +1,5 @@
 ﻿namespace Application.Queries.CharacterQueries;
-public class GetAllCharactersQueryHandler(DataContext context) : IRequestHandler<GetAllCharacterNamesQuery, IList<string>>
+internal class GetAllCharactersQueryHandler(DataContext context) : IRequestHandler<GetAllCharacterNamesQuery, IList<string>>
 {
     private readonly DataContext _context = context;
 

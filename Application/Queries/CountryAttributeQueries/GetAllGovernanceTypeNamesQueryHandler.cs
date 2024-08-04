@@ -1,5 +1,5 @@
 ﻿namespace Application.Queries.CountryAttributeQueries;
-public class GetAllGovernanceTypeNamesQueryHandler(DataContext context) : IRequestHandler<GetAllGovernanceTypeNamesQuery, IList<string>>
+internal class GetAllGovernanceTypeNamesQueryHandler(DataContext context) : IRequestHandler<GetAllGovernanceTypeNamesQuery, IList<string>>
 {
     private readonly DataContext _context = context;
 

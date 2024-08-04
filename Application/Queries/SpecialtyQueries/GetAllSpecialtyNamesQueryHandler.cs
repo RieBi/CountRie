@@ -1,5 +1,5 @@
 ﻿namespace Application.Queries.SpecialtyQueries;
-public class GetAllSpecialtyNamesQueryHandler(DataContext context) : IRequestHandler<GetAllSpecialtyNamesQuery, IList<string>>
+internal class GetAllSpecialtyNamesQueryHandler(DataContext context) : IRequestHandler<GetAllSpecialtyNamesQuery, IList<string>>
 {
     private readonly DataContext _context = context;
 

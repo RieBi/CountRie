@@ -1,7 +1,7 @@
 ﻿using Data.Models;
 
 namespace Application.Queries.NaturalResourceQueries;
-public class GetNaturalResourceListQueryHandler(DataContext context) : IRequestHandler<GetNaturalResourceListQuery, IList<NaturalResource>>
+internal class GetNaturalResourceListQueryHandler(DataContext context) : IRequestHandler<GetNaturalResourceListQuery, IList<NaturalResource>>
 {
     private readonly DataContext _context = context;
 

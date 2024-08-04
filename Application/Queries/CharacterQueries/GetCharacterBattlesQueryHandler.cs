@@ -1,7 +1,7 @@
 ﻿using Data.Models;
 
 namespace Application.Queries.CharacterQueries;
-public class GetCharacterBattlesQueryHandler(DataContext context) : IRequestHandler<GetCharacterBattlesQuery, IList<Battle>>
+internal class GetCharacterBattlesQueryHandler(DataContext context) : IRequestHandler<GetCharacterBattlesQuery, IList<Battle>>
 {
     private readonly DataContext _context = context;
 

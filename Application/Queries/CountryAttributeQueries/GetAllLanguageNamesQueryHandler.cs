@@ -1,5 +1,5 @@
 ﻿namespace Application.Queries.CountryAttributeQueries;
-public class GetAllLanguageNamesQueryHandler(DataContext context) : IRequestHandler<GetAllLanguageNamesQuery, IList<string>>
+internal class GetAllLanguageNamesQueryHandler(DataContext context) : IRequestHandler<GetAllLanguageNamesQuery, IList<string>>
 {
     private readonly DataContext _context = context;
 

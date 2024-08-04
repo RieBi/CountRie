@@ -2,7 +2,7 @@
 using AutoMapper.QueryableExtensions;
 
 namespace Application.Queries.CharacterQueries;
-public class GetCharacterCreateDtoQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCharacterCreateDtoQuery, CharacterCreateDto?>
+internal class GetCharacterCreateDtoQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCharacterCreateDtoQuery, CharacterCreateDto?>
 {
     private readonly DataContext _context = context;
     private readonly IMapper _mapper = mapper;

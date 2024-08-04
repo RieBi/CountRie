@@ -1,7 +1,7 @@
 ﻿using Data.Models;
 
 namespace Application.Queries.BattleQueries;
-public class GetBattleListQueryHandler(DataContext context) : IRequestHandler<GetBattleListQuery, IList<Battle>>
+internal class GetBattleListQueryHandler(DataContext context) : IRequestHandler<GetBattleListQuery, IList<Battle>>
 {
     private readonly DataContext _context = context;
 

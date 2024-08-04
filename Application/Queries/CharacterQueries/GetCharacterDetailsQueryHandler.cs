@@ -1,5 +1,5 @@
 ﻿namespace Application.Queries.CharacterQueries;
-public class GetCharacterDetailsQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCharacterDetailsQuery, CharacterDetailsDto?>
+internal class GetCharacterDetailsQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCharacterDetailsQuery, CharacterDetailsDto?>
 {
     private readonly DataContext _context = context;
     private readonly IMapper _mapper = mapper;

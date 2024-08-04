@@ -1,7 +1,7 @@
 ﻿using Application.Services.BattleManagement;
 
 namespace Application.Queries.BattleQueries;
-public class GetRandomBattleNameQueryHandler(IBattleService battleService) : IRequestHandler<GetRandomBattleNameQuery, string>
+internal class GetRandomBattleNameQueryHandler(IBattleService battleService) : IRequestHandler<GetRandomBattleNameQuery, string>
 {
     private readonly IBattleService _battleService = battleService;
 

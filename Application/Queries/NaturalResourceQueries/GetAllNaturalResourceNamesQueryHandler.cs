@@ -1,5 +1,5 @@
 ﻿namespace Application.Queries.NaturalResourceQueries;
-public class GetAllNaturalResourceNamesQueryHandler(DataContext context) : IRequestHandler<GetAllNaturalResourceNamesQuery, IList<string>>
+internal class GetAllNaturalResourceNamesQueryHandler(DataContext context) : IRequestHandler<GetAllNaturalResourceNamesQuery, IList<string>>
 {
     private readonly DataContext _context = context;
 

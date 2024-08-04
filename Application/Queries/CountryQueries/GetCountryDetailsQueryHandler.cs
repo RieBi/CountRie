@@ -1,5 +1,5 @@
 ﻿namespace Application.Queries.CountryQueries;
-public class GetCountryDetailsQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCountryDetailsQuery, CountryDetailsDto?>
+internal class GetCountryDetailsQueryHandler(DataContext context, IMapper mapper) : IRequestHandler<GetCountryDetailsQuery, CountryDetailsDto?>
 {
     private readonly DataContext _context = context;
     private readonly IMapper _mapper = mapper;

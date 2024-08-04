@@ -1,5 +1,5 @@
 ﻿namespace Application.Queries.CountryAttributeQueries;
-public class GetAllReligionNamesQueryHandler(DataContext context) : IRequestHandler<GetAllReligionNamesQuery, IList<string>>
+internal class GetAllReligionNamesQueryHandler(DataContext context) : IRequestHandler<GetAllReligionNamesQuery, IList<string>>
 {
     private readonly DataContext _context = context;
 
