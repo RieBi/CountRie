@@ -57,7 +57,9 @@ public class CharacterController(IMediator mediator, IMapper mapper, IAuthorizat
         if (!ModelState.IsValid)
             return View();
 
-        await _mediator.Send(new CreateCharacterCommand(character, User));
+        var result = await _mediator.Send(new CreateCharacterCommand(character, User));
+        if (result.IsFailed)
+            return View();
 
         return RedirectToAction(nameof(Details), new { name = character.Name });
     }
