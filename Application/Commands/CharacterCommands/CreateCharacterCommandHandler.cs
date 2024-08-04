@@ -2,7 +2,7 @@
 using Application.Services.UserManagement;
 
 namespace Application.Commands.CharacterCommands;
-public class CreateCharacterCommandHandler(DataContext context, IUserInfoService userInfo) : IRequestHandler<CreateCharacterCommand, int>
+internal class CreateCharacterCommandHandler(DataContext context, IUserInfoService userInfo) : IRequestHandler<CreateCharacterCommand, int>
 {
     private readonly DataContext _context = context;
     private readonly IUserInfoService _userInfo = userInfo;

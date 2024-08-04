@@ -1,5 +1,5 @@
 ﻿namespace Application.Commands.NaturalResourceCommands;
-public class DeleteNaturalResourceCommandHandler(DataContext context) : IRequestHandler<DeleteNaturalResourceCommand, Unit>
+internal class DeleteNaturalResourceCommandHandler(DataContext context) : IRequestHandler<DeleteNaturalResourceCommand, Unit>
 {
     private readonly DataContext _context = context;
 

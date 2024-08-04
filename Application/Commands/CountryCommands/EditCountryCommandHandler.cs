@@ -1,7 +1,7 @@
 ﻿using Application.Converters;
 
 namespace Application.Commands.CountryCommands;
-public class EditCountryCommandHandler(DataContext context) : IRequestHandler<EditCountryCommand, Unit>
+internal class EditCountryCommandHandler(DataContext context) : IRequestHandler<EditCountryCommand, Unit>
 {
     private readonly DataContext _context = context;
 

@@ -2,7 +2,7 @@
 using Application.Services.UserManagement;
 
 namespace Application.Commands.CountryCommands;
-public class CreateCountryCommandHandler(DataContext context, IUserInfoService userInfo) : IRequestHandler<CreateCountryCommand, int>
+internal class CreateCountryCommandHandler(DataContext context, IUserInfoService userInfo) : IRequestHandler<CreateCountryCommand, int>
 {
     private readonly DataContext _context = context;
     private readonly IUserInfoService _userInfo = userInfo;

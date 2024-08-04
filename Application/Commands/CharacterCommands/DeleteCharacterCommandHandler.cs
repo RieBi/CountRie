@@ -1,5 +1,5 @@
 ﻿namespace Application.Commands.CharacterCommands;
-public class DeleteCharacterCommandHandler(DataContext context) : IRequestHandler<DeleteCharacterCommand, Unit>
+internal class DeleteCharacterCommandHandler(DataContext context) : IRequestHandler<DeleteCharacterCommand, Unit>
 {
     private readonly DataContext _context = context;
 

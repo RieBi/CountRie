@@ -1,5 +1,5 @@
 ﻿namespace Application.Commands.CountryCommands;
-public class DeleteCountryCommandHandler(DataContext context) : IRequestHandler<DeleteCountryCommand, Unit>
+internal class DeleteCountryCommandHandler(DataContext context) : IRequestHandler<DeleteCountryCommand, Unit>
 {
     private readonly DataContext _context = context;
 

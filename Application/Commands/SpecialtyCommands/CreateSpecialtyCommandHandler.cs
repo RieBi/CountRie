@@ -1,5 +1,5 @@
 ﻿namespace Application.Commands.SpecialtyCommands;
-public class CreateSpecialtyCommandHandler(DataContext context) : IRequestHandler<CreateSpecialtyCommand, int>
+internal class CreateSpecialtyCommandHandler(DataContext context) : IRequestHandler<CreateSpecialtyCommand, int>
 {
     private readonly DataContext _context = context;
 

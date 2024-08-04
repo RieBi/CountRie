@@ -1,7 +1,7 @@
 ﻿using Application.Converters;
 
 namespace Application.Commands.CharacterCommands;
-public class EditCharacterCommandHandler(DataContext context) : IRequestHandler<EditCharacterCommand, Unit>
+internal class EditCharacterCommandHandler(DataContext context) : IRequestHandler<EditCharacterCommand, Unit>
 {
     private readonly DataContext _context = context;
 

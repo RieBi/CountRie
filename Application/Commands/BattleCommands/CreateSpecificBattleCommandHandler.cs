@@ -1,7 +1,7 @@
 ﻿using Application.Services.BattleManagement;
 
 namespace Application.Commands.BattleCommands;
-public class CreateSpecificBattleCommandHandler(IBattleService battleService) : IRequestHandler<CreateSpecificBattleCommand, int>
+internal class CreateSpecificBattleCommandHandler(IBattleService battleService) : IRequestHandler<CreateSpecificBattleCommand, int>
 {
     private readonly IBattleService _battleService = battleService;
 
