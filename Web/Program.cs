@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Application.Authorization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Application.Services.UserManagement;
-using System.Data.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,32 +26,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<DataContext>();
 
-var authBuilder = builder.Services.AddAuthentication();
-var googleConfigSection = builder.Configuration.GetSection("Authentication:Google");
-var (googleClientId, googleClientSecret) = (googleConfigSection["ClientId"], googleConfigSection["ClientSecret"]);
-
-if (googleClientId is not null && googleClientSecret is not null)
-{
-    authBuilder.AddGoogle(options =>
-    {
-        options.ClientId = googleClientId;
-        options.ClientSecret = googleClientSecret;
-        options.AccessDeniedPath = "/";
-    });
-}
-
-var facebookConfigSection = builder.Configuration.GetSection("Authentication:Facebook");
-var (facebookClientId, facebookClientSecret) = (facebookConfigSection["ClientId"], facebookConfigSection["ClientSecret"]);
-
-if (facebookClientId is not null && facebookClientSecret is not null)
-{
-    authBuilder.AddFacebook(options =>
-    {
-        options.ClientId = facebookClientId;
-        options.ClientSecret = facebookClientSecret;
-        options.AccessDeniedPath = "/";
-    });
-}
+builder.Services.AddExternalAuthorizationProviders(builder.Configuration);
 
 builder.Services.AddControllersWithViews()
     .AddRazorOptions(o =>
