@@ -15,7 +15,7 @@ public class EditCharacterCommandHandler(DataContext context) : IRequestHandler<
             return Unit.Value;
 
         character = await new CharacterConverter(_context)
-            .TryConvertFromDto(request.characterCreateDto, cancellationToken, character);
+            .TryConvertFromDto(request.CharacterCreateDto, cancellationToken, character);
 
         if (character is null)
             return Unit.Value;
