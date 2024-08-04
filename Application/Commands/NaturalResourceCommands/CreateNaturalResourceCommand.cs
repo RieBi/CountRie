@@ -1,7 +1,4 @@
 ﻿using Data.Models;
 
 namespace Application.Commands.NaturalResourceCommands;
-public class CreateNaturalResourceCommand(NaturalResource resource) : IRequest<int>
-{
-    public NaturalResource Resource { get; } = resource;
-}
+public record CreateNaturalResourceCommand(NaturalResource Resource) : IRequest<int>;
