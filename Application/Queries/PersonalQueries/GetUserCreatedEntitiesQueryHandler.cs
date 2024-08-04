@@ -2,7 +2,6 @@
 using Application.Queries.CountryQueries;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.Queries.PersonalQueries;
 public class GetUserCreatedEntitiesQueryHandler(UserManager<IdentityUser> userManager, DataContext context, IMapper mapper) : IRequestHandler<GetUserCreatedEntitiesQuery, UserCreatedDto>

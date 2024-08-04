@@ -1,5 +1,4 @@
-﻿
-using Application.Services.BattleManagement;
+﻿using Application.Services.BattleManagement;
 
 namespace Application.Commands.BattleCommands;
 public class CreateSpecificBattleCommandHandler(IBattleService battleService) : IRequestHandler<CreateSpecificBattleCommand, int>

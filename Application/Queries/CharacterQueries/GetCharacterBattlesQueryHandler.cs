@@ -1,11 +1,4 @@
-﻿using AutoMapper;
-using Data.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Data.Models;
 
 namespace Application.Queries.CharacterQueries;
 public class GetCharacterBattlesQueryHandler(DataContext context) : IRequestHandler<GetCharacterBattlesQuery, IList<Battle>>

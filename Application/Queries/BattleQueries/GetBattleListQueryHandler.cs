@@ -1,5 +1,4 @@
 ﻿using Data.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.Queries.BattleQueries;
 public class GetBattleListQueryHandler(DataContext context) : IRequestHandler<GetBattleListQuery, IList<Battle>>
