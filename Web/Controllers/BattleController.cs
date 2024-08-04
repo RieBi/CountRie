@@ -52,20 +52,24 @@ public class BattleController(IMediator mediator, IMapper mapper) : Controller
 
         var ret = Request.Headers.Referer.ToString() + "#opponentName";
 
-        var opponentId = await _mediator.Send(new GetCharacterIdByNameQuery(opponentName));
-        if (opponentId == -1)
+        var opponentIdResult = await _mediator.Send(new GetCharacterIdByNameQuery(opponentName));
+        if (opponentIdResult.IsFailed)
         {
             TempData["Error"] = "The provided opponent is not a valid character.";
             return Redirect(ret);
         }
 
-        var newBattleId = await _mediator.Send(new CreateSpecificBattleCommand(characterId, opponentId));
+        var opponentId = opponentIdResult.Value;
 
-        if (newBattleId == -1)
+        var newBattleIdResult = await _mediator.Send(new CreateSpecificBattleCommand(characterId, opponentId));
+
+        if (newBattleIdResult.IsFailed)
         {
             TempData["Error"] = "A character cannot fight itself.";
             return Redirect(ret);
         }
+
+        var newBattleId = newBattleIdResult.Value;
 
         return Redirect(Request.Headers.Referer.ToString() + $"#b-{newBattleId}");
 
@@ -77,15 +81,15 @@ public class BattleController(IMediator mediator, IMapper mapper) : Controller
         if (!ModelState.IsValid || characterName1 == characterName2)
             return RedirectToAction(nameof(Index));
 
-        var characterId1 = await _mediator.Send(new GetCharacterIdByNameQuery(characterName1));
-        if (characterId1 == -1)
+        var characterId1Result = await _mediator.Send(new GetCharacterIdByNameQuery(characterName1));
+        if (characterId1Result.IsFailed)
             return RedirectToAction(nameof(Index));
 
-        var characterId2 = await _mediator.Send(new GetCharacterIdByNameQuery(characterName2));
-        if (characterId2 == -1)
+        var characterId2Result = await _mediator.Send(new GetCharacterIdByNameQuery(characterName2));
+        if (characterId2Result.IsFailed)
             return RedirectToAction(nameof(Index));
         
-        var battleId = await _mediator.Send(new CreateNamedBattleCommand(characterId1, characterId2, battleName));
+        var battleId = await _mediator.Send(new CreateNamedBattleCommand(characterId1Result.Value, characterId2Result.Value, battleName));
         return RedirectToAction(nameof(Index), "Battle", $"b-{battleId}");
     }
 }

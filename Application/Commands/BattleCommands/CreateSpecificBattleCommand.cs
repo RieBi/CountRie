@@ -1,2 +1,2 @@
 ﻿namespace Application.Commands.BattleCommands;
-public record CreateSpecificBattleCommand(int CharacterAId, int CharacterBId) : IRequest<int>;
+public record CreateSpecificBattleCommand(int CharacterAId, int CharacterBId) : IRequest<Result<int>>;

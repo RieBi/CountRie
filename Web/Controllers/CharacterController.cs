@@ -66,9 +66,11 @@ public class CharacterController(IMediator mediator, IMapper mapper, IAuthorizat
     [Authorize]
     public async Task<IActionResult> Edit(string name)
     {
-        var characterId = await _mediator.Send(new GetCharacterIdByNameQuery(name));
-        if (characterId == -1)
+        var characterIdResult = await _mediator.Send(new GetCharacterIdByNameQuery(name));
+        if (characterIdResult.IsFailed)
             return this.RedirectBack();
+
+        var characterId = characterIdResult.Value;
 
         var isAuthorized = await _authorizationService.AuthorizeAsync(User, characterId, Requirements.Character);
         if (!isAuthorized.Succeeded)
