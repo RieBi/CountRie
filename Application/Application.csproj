@@ -21,6 +21,7 @@
     <Using Include="AutoMapper" />
     <Using Include="Data" />
     <Using Include="MediatR" />
+    <Using Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
 
 </Project>

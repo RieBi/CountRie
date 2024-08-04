@@ -5,12 +5,11 @@ public class GetNaturalResourceListQueryHandler(DataContext context) : IRequestH
 {
     private readonly DataContext _context = context;
 
-    public Task<IList<NaturalResource>> Handle(GetNaturalResourceListQuery request, CancellationToken cancellationToken)
+    public async Task<IList<NaturalResource>> Handle(GetNaturalResourceListQuery request, CancellationToken cancellationToken)
     {
-        var resources = _context.NaturalResources;
+        var resources = await _context.NaturalResources
+            .ToListAsync(cancellationToken);
 
-        IList<NaturalResource> resourceList = resources.ToList();
-
-        return Task.FromResult(resourceList);
+        return resources;
     }
 }

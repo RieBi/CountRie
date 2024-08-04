@@ -4,10 +4,12 @@ public class GetAllCharactersQueryHandler(DataContext context) : IRequestHandler
     private readonly DataContext _context = context;
 
 
-    public Task<IList<string>> Handle(GetAllCharacterNamesQuery request, CancellationToken cancellationToken)
+    public async Task<IList<string>> Handle(GetAllCharacterNamesQuery request, CancellationToken cancellationToken)
     {
-        IList<string> characters = [.. _context.Characters.Select(f => f.Name)];
+        IList<string> characters = await _context.Characters
+            .Select(f => f.Name)
+            .ToListAsync(cancellationToken);
 
-        return Task.FromResult(characters);
+        return characters;
     }
 }

@@ -3,10 +3,12 @@ public class GetAllCountryNamesQueryHandler(DataContext context) : IRequestHandl
 {
     private readonly DataContext _context = context;
 
-    public Task<IList<string>> Handle(GetAllCountryNamesQuery request, CancellationToken cancellationToken)
+    public async Task<IList<string>> Handle(GetAllCountryNamesQuery request, CancellationToken cancellationToken)
     {
-        IList<string> result = [.. _context.Countries.Select(f => f.Name)];
+        IList<string> result = await _context.Countries
+            .Select(f => f.Name)
+            .ToListAsync(cancellationToken);
 
-        return Task.FromResult(result);
+        return result;
     }
 }

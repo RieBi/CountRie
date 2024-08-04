@@ -12,15 +12,16 @@ public class GetCharacterBattlesQueryHandler(DataContext context) : IRequestHand
 {
     private readonly DataContext _context = context;
 
-    public Task<IList<Battle>> Handle(GetCharacterBattlesQuery request, CancellationToken cancellationToken)
+    public async Task<IList<Battle>> Handle(GetCharacterBattlesQuery request, CancellationToken cancellationToken)
     {
-        var battles = _context.Battles
+        IList<Battle> battles = await _context.Battles
             .Include(f => f.WinnerCharacter)
             .Include(f => f.LoserCharacter)
             .Include(f => f.Country)
             .Where(f => f.WinnerCharacter.Id == request.CharacterId
-            || f.LoserCharacter.Id == request.CharacterId);
+            || f.LoserCharacter.Id == request.CharacterId)
+            .ToListAsync(cancellationToken);
 
-        return Task.FromResult((IList<Battle>)[.. battles]);
+        return battles;
     }
 }

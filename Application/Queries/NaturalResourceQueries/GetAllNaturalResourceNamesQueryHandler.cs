@@ -3,10 +3,12 @@ public class GetAllNaturalResourceNamesQueryHandler(DataContext context) : IRequ
 {
     private readonly DataContext _context = context;
 
-    public Task<IList<string>> Handle(GetAllNaturalResourceNamesQuery request, CancellationToken cancellationToken)
+    public async Task<IList<string>> Handle(GetAllNaturalResourceNamesQuery request, CancellationToken cancellationToken)
     {
-        IList<string> result = [.. _context.NaturalResources.Select(f => f.Name)];
+        IList<string> result = await _context.NaturalResources
+            .Select(f => f.Name)
+            .ToListAsync(cancellationToken);
 
-        return Task.FromResult(result);
+        return result;
     }
 }

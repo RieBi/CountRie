@@ -3,10 +3,12 @@ public class GetAllLanguageNamesQueryHandler(DataContext context) : IRequestHand
 {
     private readonly DataContext _context = context;
 
-    public Task<IList<string>> Handle(GetAllLanguageNamesQuery request, CancellationToken cancellationToken)
+    public async Task<IList<string>> Handle(GetAllLanguageNamesQuery request, CancellationToken cancellationToken)
     {
-        IList<string> result = [.. _context.Languages.Select(f => f.Name)];
+        IList<string> result = await _context.Languages
+            .Select(f => f.Name)
+            .ToListAsync(cancellationToken);
 
-        return Task.FromResult(result);
+        return result;
     }
 }
