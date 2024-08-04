@@ -1,4 +1,2 @@
 ﻿namespace Application.Queries.CountryAttributeQueries;
-public class GetAllReligionNamesQuery : IRequest<IList<string>>
-{
-}
+public record GetAllReligionNamesQuery : IRequest<IList<string>>;

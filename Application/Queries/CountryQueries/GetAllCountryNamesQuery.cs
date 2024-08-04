@@ -1,4 +1,2 @@
 ﻿namespace Application.Queries.CountryQueries;
-public class GetAllCountryNamesQuery : IRequest<IList<string>>
-{
-}
+public record GetAllCountryNamesQuery : IRequest<IList<string>>;

@@ -1,4 +1,2 @@
 ﻿namespace Application.Queries.BattleQueries;
-public class GetRandomBattleNameQuery : IRequest<string>
-{
-}
+public record GetRandomBattleNameQuery : IRequest<string>;
